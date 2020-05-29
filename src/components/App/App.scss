@@ -1,0 +1,19 @@
+@import "../../_style-variables";
+
+.app{
+
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 4fr ;
+  grid-template-rows: 6vh 1fr;
+  grid-gap: 2vh;
+
+  background-color: $app-background;
+}
+
+.app__content{
+    background-color: $app-primary;
+
+    border-radius: 10px;
+}
+
