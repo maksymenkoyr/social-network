@@ -1,13 +1,18 @@
 import React from 'react'
-import "./MainNav.scss"
+import './MainNav.scss'
+import {NavLink} from 'react-router-dom'
 
 const MainNav = () => {
     return (
-        <nav className="main-nav">
+        <nav className='main-nav'>
             <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
+                <li>
+                    <NavLink to='/profile'>Profile</NavLink>
+                </li>
+                <li>
+                    <NavLink to='/messages'>Messages</NavLink>
+                </li>
+                <li></li>
                 <li>4</li>
                 <li>5</li>
             </ul>
