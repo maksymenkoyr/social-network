@@ -1,13 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.scss';
-import App from './components/App/App';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.scss'
+import App from './components/App/App'
+import store, { subscribe } from './state'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-
+const render = () =>{
+    ReactDOM.render(
+        <React.StrictMode>
+            <App state={store.state} />
+        </React.StrictMode>,
+        document.getElementById('root')
+        )
+    }
+render()
+subscribe(render)

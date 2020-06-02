@@ -1,13 +1,14 @@
 import React from 'react'
 import ProfilePublications from './ProfilePublications'
 
-const Profile = () => {
+const Profile = (props) => {
     return (
         <main className="app__content profile">
             <div className="profile__header">
 
             </div>
-            <ProfilePublications/>
+            
+            <ProfilePublications {...props}/>
         </main>
     )
 }

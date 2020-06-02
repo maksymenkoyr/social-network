@@ -6,7 +6,7 @@ import Profile from '../AppContent/Profile/Profile'
 import {HashRouter, Switch, Route} from 'react-router-dom'
 import Messages from '../AppContent/Messenges/Messages'
 
-function App() {
+function App(props) {
     return (
         <HashRouter>
             <div className='app'>
@@ -15,7 +15,7 @@ function App() {
                 <Switch>
                     <Switch>
                         <Route path='/profile'>
-                            <Profile />
+                            <Profile {...props}  />
                         </Route>
                         <Route path='/messages'>
                             <Messages />
