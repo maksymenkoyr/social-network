@@ -1,6 +1,7 @@
 import React from 'react'
 import Publication from '../Publication'
-
+import {createAction} from "../../../redux/profileReducer"
+console.log(createAction)
 const ProfilePublications = ({state}) => {
     const publications = state.profile.publicationList.map(item => (
         <Publication publicationContent={item.publicationContent} />
@@ -10,17 +11,18 @@ const ProfilePublications = ({state}) => {
     return (
         <div className='profile__publication'>
             <textarea
-                value={state.inputText}
+                value={state.profile.inputText}
                 ref={ref}
                 type='arialabel'
                 className='publication__input'
                 onChange={() => {
-                    state.dispatch(state.createAction.changeTextActionCreator(ref.current.value))
+                    
+                    state.dispatch(createAction.changeTextActionCreator(ref.current.value))
                 }}
             ></textarea>
             <button
                 onClick={() => {
-                    state.dispatch(state.createAction.addPublicationActionCreator())
+                    state.dispatch(createAction.addPublicationActionCreator())
                 }}
             >
                 add
