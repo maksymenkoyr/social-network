@@ -1,7 +1,15 @@
 const ADD_PUBLICATION = 'ADD_PUBLICATION'
 const CHANGE_TEXT = 'CHANGE_TEXT'
 
-const profileReducer = (state, action) => {
+let initialState = {
+    publicationList: [
+        {publicationContent: 'agagag'},
+        {publicationContent: 'go go go'},
+        {publicationContent: 'one'}
+    ],
+    inputText: ''
+}
+const profileReducer = (state = initialState, action) => {
     if (action.type === ADD_PUBLICATION) {
         state.publicationList.push({publicationContent: state.inputText})
         state.inputText = ''
