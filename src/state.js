@@ -8,20 +8,22 @@ let store = {
                 {publicationContent: 'one'}
             ]
         },
-        inputText: "",
 
-        addPublication() {
-            this.profile.publicationList.push({publicationContent: this.inputText})
-            this.inputText = ""
-            render()
-        },
-        changeInputValue(value) {
-            this.inputText = value
-            render()
+            inputText: '',
+
+        dispatch(action) {
+            if (action.type === 'ADD_PUBLICATION') {
+                this.profile.publicationList.push({publicationContent: this.inputText})
+                this.inputText = ''
+                render()
+            } else if (action.type === 'INPUT_TEXT') {
+                this.inputText = action.newValue
+                render()
+            }
         }
     }
 }
-export const subscribe = (observer) =>{
+export const subscribe = observer => {
     render = observer
 }
 export default store

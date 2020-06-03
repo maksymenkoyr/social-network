@@ -15,12 +15,12 @@ const ProfilePublications = props => {
                 type='arialabel'
                 className='publication__input'
                 onChange={() => {
-                    props.state.changeInputValue(ref.current.value)
+                    props.state.dispatch({type:"INPUT_TEXT", newValue: ref.current.value})
                 }}
             ></input>
             <button
                 onClick={() => {
-                    props.state.addPublication()
+                    props.state.dispatch({type:"ADD_PUBLICATION"})
                 }}
             >
                 add
