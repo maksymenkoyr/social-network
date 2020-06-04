@@ -13,7 +13,6 @@ let store = {
         },
 
         callsubscriber() {
-            console.log('callsubscriber')
         },
         dispatch(action) {
             this.profile = profileReducer(this.profile, action)

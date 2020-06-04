@@ -1,5 +1,5 @@
 import React from 'react'
-import ProfilePublications from './ProfilePublications'
+import ProfilePublicationsContainer from './ProfilePublicationsContainer'
 
 const Profile = (props) => {
     return (
@@ -8,7 +8,7 @@ const Profile = (props) => {
 
             </div>
             
-            <ProfilePublications {...props}/>
+            <ProfilePublicationsContainer {...props}/>
         </main>
     )
 }
