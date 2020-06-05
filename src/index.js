@@ -2,16 +2,22 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import './index.scss'
 import App from './components/App/App'
-import store from './redux/redux-store'
-const render = state => {
+import {createStore} from 'redux'
+import profileReducer from './reducers/profileReducer'
+import {Provider} from 'react-redux'
+
+let store = createStore(profileReducer)
+console.log(store.getState())
+const render = () => {
     ReactDOM.render(
         <React.StrictMode>
-            <App state={state} dispatch={store.dispatch.bind(store)} />
+            <Provider store={store}>
+                <App />
+            </Provider>
         </React.StrictMode>,
         document.getElementById('root')
     )
 }
-render(store.getState())
-store.subscribe(() => {
-    render(store.getState())
-})
+
+render()
+store.subscribe(render)
