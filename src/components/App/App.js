@@ -5,6 +5,7 @@ import MainNav from '../MainNav/MainNav'
 import {HashRouter, Switch, Route} from 'react-router-dom'
 import Messages from '../AppContent/Messenges/Messages'
 import Profile from '../../containers/Profile'
+import Users from '../../containers/Users'
 
 function App(props) {
     return (
@@ -14,10 +15,13 @@ function App(props) {
                 <MainNav />
                 <Switch>
                     <Route path='/profile'>
-                        <Profile/>
+                        <Profile />
                     </Route>
                     <Route path='/messages'>
                         <Messages />
+                    </Route>
+                    <Route path='/users'>
+                        <Users />
                     </Route>
                 </Switch>
             </div>

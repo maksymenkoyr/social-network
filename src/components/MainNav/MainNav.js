@@ -12,7 +12,9 @@ const MainNav = () => {
                 <li>
                     <NavLink to='/messages'>Messages</NavLink>
                 </li>
-                <li></li>
+                <li>
+                    <NavLink to='/users'>Users</NavLink>
+                </li>
                 <li>4</li>
                 <li>5</li>
             </ul>

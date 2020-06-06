@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom'
 import './index.scss'
 import App from './components/App/App'
 import {createStore} from 'redux'
-import profileReducer from './reducers/profileReducer'
 import {Provider} from 'react-redux'
+import {rootReducer} from './reducers/rootReducer'
 
-let store = createStore(profileReducer)
+let store = createStore(rootReducer)
 console.log(store.getState())
 const render = () => {
     ReactDOM.render(
