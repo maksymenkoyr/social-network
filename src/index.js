@@ -3,11 +3,10 @@ import ReactDOM from 'react-dom'
 import './index.scss'
 import App from './components/App/App'
 import {createStore} from 'redux'
-import profileReducer from './reducers/profileReducer'
 import {Provider} from 'react-redux'
+import {rootReducer} from './reducers/rootReducer'
 
-let store = createStore(profileReducer)
-console.log(store.getState())
+let store = createStore(rootReducer)
 const render = () => {
     ReactDOM.render(
         <React.StrictMode>
@@ -20,4 +19,4 @@ const render = () => {
 }
 
 render()
-store.subscribe(render)
+// store.subscribe(render)

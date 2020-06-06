@@ -16,8 +16,8 @@ const Profile = (props) => {
 }
 
 const mapStateToProps = state => ({
-    publicationsList: state.publicationsList,
-    inputValue: state.inputValue
+    publicationsList: state.profilePage.publicationsList,
+    inputValue: state.profilePage.inputValue
 })
 const mapDispatchToProps = dispatch => ({
     addPublication: () => {
