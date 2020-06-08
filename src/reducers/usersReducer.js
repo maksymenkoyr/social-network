@@ -1,4 +1,4 @@
-import {GET_USERS, TOGGLE_FOLLOW} from '../constants/actionTypes'
+import {GET_USERS, TOGGLE_FOLLOWING} from '../constants/actionTypes'
 
 let initialState = {
     users: []
@@ -11,11 +11,11 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users: action.users
             }
-        case TOGGLE_FOLLOW:
+        case TOGGLE_FOLLOWING:
             return {
                 ...state,
                 users: state.users.map(user => {
-                    if (user.userdId === action.userId) {
+                    if (user.id === action.userId) {
                         return {
                             ...user,
                             followed: !user.followed

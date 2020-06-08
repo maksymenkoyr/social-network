@@ -29,7 +29,8 @@
             margin: 0;
         }
     }
-    &__follow {
+    &__unfollow {
+        cursor: pointer;
         margin-top: auto;
         align-self: flex-end;
 
@@ -39,15 +40,28 @@
         width: 80px;
         height: 25px;
 
-        background-color:$app-secondary;
+        background-color: $app-secondary;
 
         border-radius: $primary-border-radius;
 
         color: #fff;
     }
-    &__unfollow {
+    &__follow {
+        cursor: pointer;
+
+        margin-top: auto;
+        align-self: flex-end;
+
+        text-align: center;
+        vertical-align: middle;
+
+        width: 80px;
+        height: 25px;
+
+        border-radius: $primary-border-radius;
+
         background-color: $app-primary;
         color: #000;
-        border: .7px solid #333
+        border: 0.7px solid #333;
     }
 }

@@ -2,8 +2,8 @@ import {connect} from 'react-redux'
 import React from 'react'
 import * as axios from 'axios'
 import {REQUEST, API_KEY} from '../constants/serverAPI'
-import {getUsers} from '../actions'
-import UsersList from '../components/AppContent/Users/UsersList'
+import {getUsers, toggleFollowing} from '../actions'
+import UserPreview from '../components/AppContent/Users/UserPreview'
 class Users extends React.Component {
     componentDidMount() {
         axios.get(REQUEST + 'users', {headers: {'API-KEY': API_KEY}}).then(response => {
@@ -11,9 +11,14 @@ class Users extends React.Component {
         })
     }
     render() {
+        console.log(this.props)
         return (
             <main className='app__content users'>
-                <UsersList users={this.props.users}/>
+                <ul className='users__list'>
+                    {this.props.users.map(user => {
+                        return <UserPreview user={user} toggleFollowing={this.props.toggleFollowing} />
+                    })}
+                </ul>
             </main>
         )
     }
@@ -24,8 +29,11 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    getUsers: (users) => {
+    getUsers: users => {
         dispatch(getUsers(users))
+    },
+    toggleFollowing: id => {
+        dispatch(toggleFollowing(id))
     }
 })
 

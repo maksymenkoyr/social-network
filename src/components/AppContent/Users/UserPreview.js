@@ -1,7 +1,7 @@
 import React from 'react'
 import './Users.scss'
 
-const UserPreview = ({user}) => {
+const UserPreview = ({user, toggleFollowing}) => {
     return (
         <li className='user-preview'>
             <img
@@ -12,11 +12,14 @@ const UserPreview = ({user}) => {
             <div className='user-preview__info'>
                 <p className='user-preview__name'>{user.name}</p>
                 <p className='user-preview__status'>{user.status}</p>
-                {user.followed ? (
-                    <div className='user-preview__unfollow'>unfollow</div>
-                ) : (
-                    <div className='user-preview__follow'>follow</div>
-                )}
+                <div
+                    className={user.followed ? 'user-preview__unfollow' : 'user-preview__follow'}
+                    onClick={() => {
+                        toggleFollowing(user.id)
+                    }}
+                >
+                    {user.followed ? 'unfollow' : 'follow'}
+                </div>
             </div>
         </li>
     )
