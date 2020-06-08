@@ -1,0 +1,53 @@
+@import "../../../_style-variables";
+.users__list {
+    width: 100%;
+    max-width: 700px;
+    list-style: none;
+    margin: 0 auto;
+}
+.user-preview {
+    margin: 10px 0;
+    border-radius: $primary-border-radius;
+    background-color: $app-primary;
+    width: 100%;
+    height: 100px;
+
+    padding: 10px;
+
+    display: flex;
+
+    &__avatar {
+        height: 100%;
+    }
+    &__info {
+        width: 100%;
+        padding-left: 10px;
+        display: flex;
+        flex-direction: column;
+
+        p {
+            margin: 0;
+        }
+    }
+    &__follow {
+        margin-top: auto;
+        align-self: flex-end;
+
+        text-align: center;
+        vertical-align: middle;
+
+        width: 80px;
+        height: 25px;
+
+        background-color:$app-secondary;
+
+        border-radius: $primary-border-radius;
+
+        color: #fff;
+    }
+    &__unfollow {
+        background-color: $app-primary;
+        color: #000;
+        border: .7px solid #333
+    }
+}

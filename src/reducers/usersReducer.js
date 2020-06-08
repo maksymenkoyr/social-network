@@ -1,7 +1,7 @@
 import {GET_USERS, TOGGLE_FOLLOW} from '../constants/actionTypes'
 
 let initialState = {
-    users: [{name: 'jojo'}]
+    users: []
 }
 
 const usersReducer = (state = initialState, action) => {

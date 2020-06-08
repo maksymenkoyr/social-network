@@ -5,18 +5,34 @@ import {NavLink} from 'react-router-dom'
 const MainNav = () => {
     return (
         <nav className='main-nav'>
-            <ul>
+            <ul className='pages-navigation'>
                 <li>
-                    <NavLink to='/profile'>Profile</NavLink>
+                    <NavLink
+                        to='/profile'
+                        activeClassName='pages-navigation__link--active'
+                        className='pages-navigation__link'
+                    >
+                        Profile
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/messages'>Messages</NavLink>
+                    <NavLink
+                        activeClassName='pages-navigation__link--active'
+                        className='pages-navigation__link'
+                        to='/messages'
+                    >
+                        Messages
+                    </NavLink>
                 </li>
                 <li>
-                    <NavLink to='/users'>Users</NavLink>
+                    <NavLink
+                        activeClassName='pages-navigation__link--active'
+                        className='pages-navigation__link'
+                        to='/users'
+                    >
+                        Users
+                    </NavLink>
                 </li>
-                <li>4</li>
-                <li>5</li>
             </ul>
         </nav>
     )

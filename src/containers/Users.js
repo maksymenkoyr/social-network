@@ -1,9 +1,9 @@
 import {connect} from 'react-redux'
 import React from 'react'
-import UserPreview from '../components/AppContent/UserPreview'
 import * as axios from 'axios'
 import {REQUEST, API_KEY} from '../constants/serverAPI'
 import {getUsers} from '../actions'
+import UsersList from '../components/AppContent/Users/UsersList'
 class Users extends React.Component {
     componentDidMount() {
         axios.get(REQUEST + 'users', {headers: {'API-KEY': API_KEY}}).then(response => {
@@ -13,12 +13,7 @@ class Users extends React.Component {
     render() {
         return (
             <main className='app__content users'>
-                <ul className='users__list'>
-                    {this.props.users.map(user =>{
-                       return (
-                        <UserPreview user={user} />
-                    )})}
-                </ul>
+                <UsersList users={this.props.users}/>
             </main>
         )
     }

@@ -1,6 +1,21 @@
 @import "../../_style-variables";
 
-.main-nav{
-    
-    border-radius: 10px;
+.main-nav {
+    background-color: $app-primary;
+    border-radius: $primary-border-radius;
+    margin: 10px;
+}
+
+.pages-navigation {
+    margin: 0;
+    padding: 10px;
+
+    &__link {
+        color: #000;
+        text-decoration: none;
+
+        &--active {
+            color: $app-secondary;
+        }
+    }
 }
