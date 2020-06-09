@@ -2,24 +2,31 @@ import {
     ADD_PUBLICATION,
     CHANGE_PUBLICATION_INPUT,
     GET_USERS,
-    TOGGLE_FOLLOWING
+    TOGGLE_FOLLOWING,
+    SET_CURRENT_PAGE,
 } from '../constants/actionTypes'
 
-export const addPublication = () => {
-    return {type: ADD_PUBLICATION}
-}
+export const addPublication = () => ({
+    type: ADD_PUBLICATION,
+})
 
-export const changePublication = value => {
-    return {type: CHANGE_PUBLICATION_INPUT, value: value}
-}
+export const changePublication = value => ({
+    type: CHANGE_PUBLICATION_INPUT,
+    value: value,
+})
 
-export const getUsers = users => {
-    return {type: GET_USERS, users: users}
-}
+export const getUsers = (users, count) => ({
+    type: GET_USERS,
+    users: users,
+    count: count,
+})
 
-export const toggleFollowing = id => {
-    return {
-        type: TOGGLE_FOLLOWING,
-        userId: id
-    }
-}
+export const toggleFollowing = id => ({
+    type: TOGGLE_FOLLOWING,
+    userId: id,
+})
+
+export const setCurrentPage = pageNumber => ({
+    type: SET_CURRENT_PAGE,
+pageNumber: pageNumber,
+})
