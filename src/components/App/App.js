@@ -14,7 +14,7 @@ function App(props) {
                 <Header />
                 <MainNav />
                 <Switch>
-                    <Route path='/profile'>
+                    <Route path='/profile/:userId?'>
                         <Profile />
                     </Route>
                     <Route path='/messages'>

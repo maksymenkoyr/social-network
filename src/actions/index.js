@@ -4,6 +4,7 @@ import {
     GET_USERS,
     TOGGLE_FOLLOWING,
     SET_CURRENT_PAGE,
+    SET_CURRENT_USER,
 } from '../constants/actionTypes'
 
 export const addPublication = () => ({
@@ -28,5 +29,10 @@ export const toggleFollowing = id => ({
 
 export const setCurrentPage = pageNumber => ({
     type: SET_CURRENT_PAGE,
-pageNumber: pageNumber,
+    pageNumber: pageNumber,
+})
+
+export const setCurrentUser = currentUser => ({
+    type: SET_CURRENT_USER,
+    currentUser,
 })

@@ -1,12 +1,13 @@
-import {ADD_PUBLICATION, CHANGE_PUBLICATION_INPUT} from '../constants/actionTypes'
+import {ADD_PUBLICATION, CHANGE_PUBLICATION_INPUT, SET_CURRENT_USER} from '../constants/actionTypes'
 
 let initialState = {
     publicationsList: [
         {publicationContent: 'agagag'},
         {publicationContent: 'go go go'},
-        {publicationContent: 'one'}
+        {publicationContent: 'one'},
     ],
-    inputValue: ''
+    inputValue: '',
+    currentUser: {},
 }
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -21,6 +22,10 @@ const profileReducer = (state = initialState, action) => {
             newState.inputValue = action.value
             return newState
         }
+        case SET_CURRENT_USER: {
+            return {...state, currentUser: action.currentUser}
+        }
+
         default:
             return state
     }

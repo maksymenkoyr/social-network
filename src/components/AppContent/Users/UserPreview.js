@@ -1,14 +1,13 @@
 import React from 'react'
 import './Users.scss'
+import {Link} from 'react-router-dom'
 
 const UserPreview = ({user, toggleFollowing}) => {
     return (
         <li className='user-preview'>
-            <img
-                alt=''
-                className='user-preview__avatar'
-                src={user.photos.small || 'images/defaultAvatar.png'}
-            ></img>
+            <Link to={'/profile/' + user.id} className='user-preview__avatar'>
+                <img alt='' src={user.photos.small || 'images/defaultAvatar.png'}></img>
+            </Link>
             <div className='user-preview__info'>
                 <p className='user-preview__name'>{user.name}</p>
                 <p className='user-preview__status'>{user.status}</p>

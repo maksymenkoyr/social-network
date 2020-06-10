@@ -1,23 +1,37 @@
 import React from 'react'
 
 import ProfilePublications from '../components/AppContent/Profile/ProfilePublications'
-import {addPublication, changePublication} from '../actions'
+import {addPublication, changePublication, setCurrentPage, setCurrentUser} from '../actions'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router-dom'
+import ProfileInfo from '../components/AppContent/Profile/ProfileInfo'
+import * as axios from 'axios'
+import {REQUEST, API_KEY} from '../constants/serverAPI'
 
-const Profile = (props) => {
-    return (
-        <main className='app__content profile'>
-            <div className='profile__background'></div>
-            <img src='' alt='' className='profile__avatar'></img>
-            <div className='profile__info'></div>
-            <ProfilePublications {...props} />
-        </main>
-    )
+class Profile extends React.Component {
+    componentDidMount() {
+        axios
+            .get(REQUEST + `profile/${this.props.match.params.userId}`, {
+                headers: {'API-KEY': API_KEY},
+            })
+            .then(response => {
+                this.props.setCurrentUser(response.data)
+            })
+    }
+    render() {
+        return (
+            <main className='app__content profile'>
+                <ProfileInfo {...this.props.currentUser} />
+                <ProfilePublications {...this.props} />
+            </main>
+        )
+    }
 }
 
 const mapStateToProps = state => ({
     publicationsList: state.profilePage.publicationsList,
-    inputValue: state.profilePage.inputValue
+    inputValue: state.profilePage.inputValue,
+    currentUser: state.profilePage.currentUser,
 })
 const mapDispatchToProps = dispatch => ({
     addPublication: () => {
@@ -25,7 +39,10 @@ const mapDispatchToProps = dispatch => ({
     },
     updateInput: value => {
         dispatch(changePublication(value))
-    }
+    },
+    setCurrentUser: currentUser => {
+        dispatch(setCurrentUser(currentUser))
+    },
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
 
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Profile))
