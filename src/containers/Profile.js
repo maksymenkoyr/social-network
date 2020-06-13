@@ -1,7 +1,7 @@
 import React from 'react'
 
 import ProfilePublications from '../components/AppContent/Profile/ProfilePublications'
-import {addPublication, changePublication, setCurrentPage, setCurrentUser} from '../actions'
+import {addPublication, changePublication, setCurrentUser} from '../actions'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import ProfileInfo from '../components/AppContent/Profile/ProfileInfo'
