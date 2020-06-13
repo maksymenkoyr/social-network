@@ -13,10 +13,11 @@ class App extends React.Component {
         axios
             .get(REQUEST + 'auth/me', {
                 withCredentials: true,
-                // headers: {'API-KEY': API_KEY},
+                headers: {'API-KEY': API_KEY},
             })
             .then(response => {
-                
+                // this.props.getUsers(response.data.items, response.data.totalCount)
+                // console.log(this.props.totalUsersCount)
             })
     }
     render() {

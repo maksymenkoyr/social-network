@@ -18,7 +18,5 @@ const render = () => {
     )
 }
 
-
-
 render()
-// store.subscribe(render)
+window.store = store

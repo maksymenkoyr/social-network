@@ -4,29 +4,20 @@ import * as axios from 'axios'
 import {REQUEST, API_KEY} from '../constants/serverAPI'
 import {getUsers, toggleFollowing, setCurrentPage} from '../actions'
 import UserPreview from '../components/AppContent/Users/UserPreview'
+import {userAPI} from '../API/api'
 class Users extends React.Component {
     componentDidMount() {
-        axios
-            .get(REQUEST + `users?page=${this.props.currentPage}&count=${this.props.pageSize}`, {
-                headers: {'API-KEY': API_KEY},
-            })
-            .then(response => {
-                this.props.getUsers(response.data.items, response.data.totalCount)
-                console.log(this.props.totalUsersCount)
-            })
+        userAPI.getUsers(this.props.pageNumber, this.props.pageSize).then(data => {
+            this.props.getUsers(data.items, data.totalCount)
+        })
     }
 
     setCurrentPage(pageNumber) {
         console.log(this.props.currentPage)
         this.props.setCurrentPage(pageNumber)
-        axios
-            .get(REQUEST + `users?page=${pageNumber}&count=${this.props.pageSize}`, {
-                headers: {'API-KEY': API_KEY},
-            })
-            .then(response => {
-                this.props.getUsers(response.data.items, response.data.totalCount)
-                console.log(this.props.totalUsersCount)
-            })
+        userAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+            this.props.getUsers(data.items, data.totalCount)
+        })
     }
 
     render() {
