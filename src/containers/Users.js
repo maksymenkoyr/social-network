@@ -1,10 +1,9 @@
 import {connect} from 'react-redux'
 import React from 'react'
-import * as axios from 'axios'
-import {REQUEST, API_KEY} from '../constants/serverAPI'
 import {getUsers, toggleFollowing, setCurrentPage} from '../actions'
 import UserPreview from '../components/AppContent/Users/UserPreview'
 import {userAPI} from '../API/api'
+import ListPreloader from '../components/common/preloaders/ListPreloader'
 class Users extends React.Component {
     componentDidMount() {
         userAPI.getUsers(this.props.pageNumber, this.props.pageSize).then(data => {
@@ -38,14 +37,23 @@ class Users extends React.Component {
         }
         return (
             <main className='app__content users'>
-                <ul className='users__pages-list'>{pages}</ul>
-                <ul className='users__list'>
-                    {this.props.users.map(user => {
-                        return (
-                            <UserPreview user={user} toggleFollowing={this.props.toggleFollowing} />
-                        )
-                    })}
-                </ul>
+                {this.props.waitResponse.usersList ? (
+                    <ListPreloader></ListPreloader>
+                ) : (
+                    <>
+                        <ul className='users__pages-list'>{pages}</ul>
+                        <ul className='users__list'>
+                            {this.props.users.map(user => {
+                                return (
+                                    <UserPreview
+                                        user={user}
+                                        toggleFollowing={this.props.toggleFollowing}
+                                    />
+                                )
+                            })}
+                        </ul>
+                    </>
+                )}
             </main>
         )
     }
@@ -56,7 +64,7 @@ const mapStateToProps = state => ({
     pageSize: state.usersPage.pageSize,
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching,
+    waitResponse: state.usersPage.waitResponse,
 })
 
 const mapDispatchToProps = dispatch => ({

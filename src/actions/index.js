@@ -6,6 +6,7 @@ import {
     SET_CURRENT_PAGE,
     SET_CURRENT_USER,
     AUTHENTICATION,
+    SET_RESPONSE_WAITING,
 } from '../constants/actionTypes'
 
 export const addPublication = () => ({
@@ -40,5 +41,10 @@ export const setCurrentUser = currentUser => ({
 
 export const authenticate = authenticatedUser => ({
     type: AUTHENTICATION,
-    authenticatedUser
+    authenticatedUser,
+})
+
+export const setResponseWaiting = target => ({
+    type: SET_RESPONSE_WAITING,
+    target,
 })

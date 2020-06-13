@@ -1,18 +1,43 @@
-import {GET_USERS, TOGGLE_FOLLOWING, SET_CURRENT_PAGE} from '../constants/actionTypes'
+import {
+    GET_USERS,
+    TOGGLE_FOLLOWING,
+    SET_CURRENT_PAGE,
+    SET_RESPONSE_WAITING,
+} from '../constants/actionTypes'
+import {follow, unFollow, followStatus} from '../API/requests'
+import {USER_LIST, FOLLOW_BUTTON} from '../constants/setResponseWaitingTargets'
 
 let initialState = {
     users: [],
     pageSize: 5,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: true,
+    waitResponse: {
+        followButton: false,
+        usersList: true,
+    },
 }
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
+        // case SET_RESPONSE_WAITING:
+        //     if (action.target === FOLLOW_BUTTON) {
+        //         return {
+        //             ...state,
+        //             waitResponse: {...state.waitResponse, followButton: true},
+        //         }
+        //     } else if (action.target === USER_LIST) {
+        //         return {
+        //             ...state,
+        //             waitResponse: {...state.waitResponse, userList: true},
+        //         }
+        //     } else {
+        //         break
+        //     }
         case GET_USERS:
             return {
                 ...state,
+                waitResponse: {...state.waitResponse, usersList: false},
                 users: action.users,
                 totalUsersCount: action.count,
             }
@@ -21,9 +46,18 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 users: state.users.map(user => {
                     if (user.id === action.userId) {
-                        return {
-                            ...user,
-                            followed: !user.followed,
+                        if (user.followed) {
+                            return {
+                                ...user,
+                                followed: unFollow(user.id).then(() => {
+                                    return followStatus(user.id)
+                                }),
+                            }
+                        } else {
+                            return {
+                                ...user,
+                                followed: follow(user.id).then(followStatus(user.id)),
+                            }
                         }
                     } else {
                         return user
