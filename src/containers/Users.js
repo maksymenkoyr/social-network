@@ -1,22 +1,11 @@
 import {connect} from 'react-redux'
 import React from 'react'
-import {getUsers, toggleFollowing, setCurrentPage} from '../actions'
 import UserPreview from '../components/AppContent/Users/UserPreview'
-import {userAPI} from '../API/api'
 import ListPreloader from '../components/common/preloaders/ListPreloader'
+import {getUsers, getCurrentPage} from '../thunks/thunks'
 class Users extends React.Component {
     componentDidMount() {
-        userAPI.getUsers(this.props.pageNumber, this.props.pageSize).then(data => {
-            this.props.getUsers(data.items, data.totalCount)
-        })
-    }
-
-    setCurrentPage(pageNumber) {
-        console.log(this.props.currentPage)
-        this.props.setCurrentPage(pageNumber)
-        userAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-            this.props.getUsers(data.items, data.totalCount)
-        })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     render() {
@@ -26,7 +15,9 @@ class Users extends React.Component {
                 <li
                     value={i}
                     className={this.props.currentPage === i && 'users__pages-item--current'}
-                    onClick={e => this.setCurrentPage(e.currentTarget.value)}
+                    onClick={e =>
+                        this.props.getCurrentPage(e.currentTarget.value, this.props.pageSize)
+                    }
                 >
                     {i}
                 </li>
@@ -67,16 +58,19 @@ const mapStateToProps = state => ({
     waitResponse: state.usersPage.waitResponse,
 })
 
-const mapDispatchToProps = dispatch => ({
-    getUsers: (users, count) => {
-        dispatch(getUsers(users, count))
-    },
-    toggleFollowing: id => {
-        dispatch(toggleFollowing(id))
-    },
-    setCurrentPage: pageNumber => {
-        dispatch(setCurrentPage(pageNumber))
-    },
-})
+// const mapDispatchToProps = dispatch => ({
+//     getUsers: (users, count) => {
+//         dispatch(getUsers(users, count))
+//     },
+//     // toggleFollowing: id => {
+//     //     dispatch(toggleFollowing(id))
+//     // },
+//     // setCurrentPage: pageNumber => {
+//     //     dispatch(setCurrentPage(pageNumber))
+//     // },
+// })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Users)
+export default connect(mapStateToProps, {
+    getUsers,
+    getCurrentPage,
+})(Users)

@@ -1,12 +1,14 @@
 import {
     ADD_PUBLICATION,
     CHANGE_PUBLICATION_INPUT,
-    GET_USERS,
+    SET_USERS,
     TOGGLE_FOLLOWING,
     SET_CURRENT_PAGE,
-    SET_CURRENT_USER,
     AUTHENTICATION,
     SET_RESPONSE_WAITING,
+    SET_LOADING_STATUS,
+    SET_CURRENT_PROFILE,
+    SET_AUTHENTICATED_USER,
 } from '../constants/actionTypes'
 
 export const addPublication = () => ({
@@ -18,8 +20,8 @@ export const changePublication = value => ({
     value: value,
 })
 
-export const getUsers = (users, count) => ({
-    type: GET_USERS,
+export const setUsers = (users, count) => ({
+    type: SET_USERS,
     users: users,
     count: count,
 })
@@ -34,9 +36,9 @@ export const setCurrentPage = pageNumber => ({
     pageNumber: pageNumber,
 })
 
-export const setCurrentUser = currentUser => ({
-    type: SET_CURRENT_USER,
-    currentUser,
+export const setCurrentProfile = currentProfile => ({
+    type: SET_CURRENT_PROFILE,
+    currentProfile,
 })
 
 export const authenticate = authenticatedUser => ({
@@ -47,4 +49,14 @@ export const authenticate = authenticatedUser => ({
 export const setResponseWaiting = target => ({
     type: SET_RESPONSE_WAITING,
     target,
+})
+
+export const setLoadingStatus = loadingInProgress => ({
+    type: SET_LOADING_STATUS,
+    loadingInProgress,
+})
+
+export const setAuthenticatedUser = user => ({
+    type: SET_AUTHENTICATED_USER,
+    user,
 })

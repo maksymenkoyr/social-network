@@ -2,7 +2,7 @@ import React from 'react'
 import './Users.scss'
 import {Link} from 'react-router-dom'
 
-const UserPreview = ({user, toggleFollowing}) => {
+    const UserPreview = ({user, toggleFollowing}) => {
     return (
         <li className='user-preview'>
             <Link to={'/profile/' + user.id} className='user-preview__avatar'>

@@ -1,48 +1,38 @@
 import React from 'react'
 
-import ProfilePublications from '../components/AppContent/Profile/ProfilePublications'
-import {addPublication, changePublication, setCurrentUser} from '../actions'
+// import ProfilePublications from '../components/AppContent/Profile/ProfilePublications'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import ProfileInfo from '../components/AppContent/Profile/ProfileInfo'
-import * as axios from 'axios'
-import {REQUEST, API_KEY} from '../constants/serverAPI'
+import {defineCurrentProfile} from '../thunks/thunks'
+import ListPreloader from '../components/common/preloaders/ListPreloader'
 
 class Profile extends React.Component {
     componentDidMount() {
-        axios
-            .get(REQUEST + `profile/${this.props.match.params.userId}`, {
-                headers: {'API-KEY': API_KEY},
-            })
-            .then(response => {
-                this.props.setCurrentUser(response.data)
-            })
+        this.props.defineCurrentProfile(
+            this.props.match.params.userId || this.props.authenticatedUser.id
+        )
     }
     render() {
-        return (
-            <main className='app__content profile'>
-                <ProfileInfo {...this.props.currentUser} />
-                <ProfilePublications {...this.props} />
-            </main>
-        )
+        if (this.props.inLoading) {
+            return <ListPreloader></ListPreloader>
+        } else {
+            return (
+                <>
+                    <ProfileInfo {...this.props.currentProfile} />
+                    {/* <ProfilePublications {...this.props} /> */}
+                </>
+            )
+        }
     }
 }
 
 const mapStateToProps = state => ({
     publicationsList: state.profilePage.publicationsList,
     inputValue: state.profilePage.inputValue,
-    currentUser: state.profilePage.currentUser,
-})
-const mapDispatchToProps = dispatch => ({
-    addPublication: () => {
-        dispatch(addPublication())
-    },
-    updateInput: value => {
-        dispatch(changePublication(value))
-    },
-    setCurrentUser: currentUser => {
-        dispatch(setCurrentUser(currentUser))
-    },
+    currentProfile: state.profilePage.currentProfile,
+    inLoading: state.profilePage.inLoading,
+    authenticatedUser: state.profilePage.authenticatedUser,
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Profile))
+export default connect(mapStateToProps, {defineCurrentProfile})(withRouter(Profile))

@@ -1,11 +1,5 @@
-import {
-    GET_USERS,
-    TOGGLE_FOLLOWING,
-    SET_CURRENT_PAGE,
-    SET_RESPONSE_WAITING,
-} from '../constants/actionTypes'
+import {TOGGLE_FOLLOWING, SET_CURRENT_PAGE, SET_USERS} from '../constants/actionTypes'
 import {follow, unFollow, followStatus} from '../API/requests'
-import {USER_LIST, FOLLOW_BUTTON} from '../constants/setResponseWaitingTargets'
 
 let initialState = {
     users: [],
@@ -34,7 +28,7 @@ const usersReducer = (state = initialState, action) => {
         //     } else {
         //         break
         //     }
-        case GET_USERS:
+        case SET_USERS:
             return {
                 ...state,
                 waitResponse: {...state.waitResponse, usersList: false},
@@ -47,6 +41,7 @@ const usersReducer = (state = initialState, action) => {
                 users: state.users.map(user => {
                     if (user.id === action.userId) {
                         if (user.followed) {
+                            console.log(followStatus(user.id))
                             return {
                                 ...user,
                                 followed: unFollow(user.id).then(() => {
@@ -54,9 +49,10 @@ const usersReducer = (state = initialState, action) => {
                                 }),
                             }
                         } else {
+                            console.log(followStatus(user.id))
                             return {
                                 ...user,
-                                followed: follow(user.id).then(followStatus(user.id)),
+                                followed: followStatus(user.id),
                             }
                         }
                     } else {
@@ -64,6 +60,7 @@ const usersReducer = (state = initialState, action) => {
                     }
                 }),
             }
+
         case SET_CURRENT_PAGE:
             return {
                 ...state,

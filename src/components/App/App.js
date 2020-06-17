@@ -8,17 +8,10 @@ import Profile from '../../containers/Profile'
 import Users from '../../containers/Users'
 import {REQUEST, API_KEY} from '../../constants/serverAPI'
 import * as axios from 'axios'
+import {authenticateUser} from '../../thunks/thunks'
 class App extends React.Component {
     componentDidMount() {
-        axios
-            .get(REQUEST + 'auth/me', {
-                withCredentials: true,
-                headers: {'API-KEY': API_KEY},
-            })
-            .then(response => {
-                // this.props.getUsers(response.data.items, response.data.totalCount)
-                // console.log(this.props.totalUsersCount)
-            })
+        this.props.dispatch(authenticateUser())
     }
     render() {
         return (
@@ -26,17 +19,19 @@ class App extends React.Component {
                 <div className='app'>
                     <Header />
                     <MainNav />
-                    <Switch>
-                        <Route path='/profile/:userId?'>
-                            <Profile />
-                        </Route>
-                        <Route path='/messages'>
-                            <Messages />
-                        </Route>
-                        <Route path='/users'>
-                            <Users />
-                        </Route>
-                    </Switch>
+                    <main className='app__content'>
+                        <Switch>
+                            <Route path='/profile/:userId?'>
+                                <Profile />
+                            </Route>
+                            <Route path='/messages'>
+                                <Messages />
+                            </Route>
+                            <Route path='/users'>
+                                <Users />
+                            </Route>
+                        </Switch>
+                    </main>
                 </div>
             </HashRouter>
         )

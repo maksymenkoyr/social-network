@@ -1,4 +1,10 @@
-import {ADD_PUBLICATION, CHANGE_PUBLICATION_INPUT, SET_CURRENT_USER} from '../constants/actionTypes'
+import {
+    ADD_PUBLICATION,
+    CHANGE_PUBLICATION_INPUT,
+    SET_CURRENT_PROFILE,
+    SET_LOADING_STATUS,
+    SET_AUTHENTICATED_USER,
+} from '../constants/actionTypes'
 
 let initialState = {
     publicationsList: [
@@ -7,7 +13,13 @@ let initialState = {
         {publicationContent: 'one'},
     ],
     inputValue: '',
-    currentUser: {},
+    currentProfile: {},
+    inLoading: true,
+    authenticatedUser: {
+        id: '',
+        login: '',
+        email: '',
+    },
 }
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -22,8 +34,20 @@ const profileReducer = (state = initialState, action) => {
             newState.inputValue = action.value
             return newState
         }
-        case SET_CURRENT_USER: {
-            return {...state, currentUser: action.currentUser}
+        case SET_CURRENT_PROFILE: {
+            return {...state, currentProfile: action.currentProfile}
+        }
+        case SET_LOADING_STATUS: {
+            return {
+                ...state,
+                inLoading: action.loadingInProgress,
+            }
+        }
+        case SET_AUTHENTICATED_USER: {
+            return {
+                ...state,
+                authenticatedUser: action.user,
+            }
         }
 
         default:

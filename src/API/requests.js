@@ -16,15 +16,26 @@ export const getUsersRequest = (currentPage = 1, pageSize = 5) => {
             return response.data
         })
 }
+export const getProfileRequest = userId => {
+    return baseRequest.get(`profile/${userId}`).then(response => {
+        return response.data
+    })
+}
 
 export const follow = userId => {
-    return baseRequest.post(REQUEST + `follow/${userId}`)
+    return baseRequest.post(`follow/${userId}`)
 }
 export const unFollow = userId => {
-    return baseRequest.delete(REQUEST + `follow/${userId}`)
+    return baseRequest.delete(`follow/${userId}`)
 }
 export const followStatus = userId => {
-    return baseRequest.get(REQUEST + `follow/${userId}`).then(response => {
+    return baseRequest.get(`follow/${userId}`).then(response => {
         return response.data
+    })
+}
+
+export const authenticationRequest = () => {
+    return baseRequest.get('auth/me').then(response => {
+        return response.data.data
     })
 }

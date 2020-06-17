@@ -1,13 +1,26 @@
 import React from 'react'
+import FollowButton from '../../common/FollowButton'
+import './Profile.scss'
+import {makeStyles} from '@material-ui/core'
 
+const useStyles = makeStyles({
+    profile: {
+        justifySelf: 'end',
+        alignSelf: 'start',
+    },
+})
 const ProfileInfo = props => {
-    console.log(props)
+    const classes = useStyles()
     return (
-        <>
-            <div className='profile__background'></div>
-            <img src='' alt='' className='profile__avatar'></img>
-            <div className='profile__info'>{props.fullName}</div>
-        </>
+        <div className='profile__info'>
+            <img
+                src={props.photos.large || 'images/defaultAvatar.png'}
+                alt=''
+                className='profile__avatar'
+            ></img>
+            <p className='profile__name'>{props.fullName}</p>
+            <FollowButton className={classes.profile}></FollowButton>
+        </div>
     )
 }
 
