@@ -1,10 +1,18 @@
-import {getUsersRequest, getProfileRequest, authenticationRequest} from '../API/requests'
+import {
+    getUsersRequest,
+    getProfileRequest,
+    authenticationRequest,
+    followRequest,
+    unfollowRequest,
+} from '../API/requests'
 import {
     setUsers,
+    setFollowingStatus,
     setCurrentPage,
-    setLoadingStatus,
+    setProfileLoadingStatus,
     setCurrentProfile,
     setAuthenticatedUser,
+    setFollowButtonLoadingStatus,
 } from '../actions'
 
 export const getUsers = (pageNumber, pageSize) => {
@@ -25,10 +33,10 @@ export const getCurrentPage = (pageNumber, pageSize) => {
 
 export const defineCurrentProfile = userId => {
     return dispatch => {
-        dispatch(setLoadingStatus(true))
+        dispatch(setProfileLoadingStatus(true))
         getProfileRequest(userId).then(response => {
             dispatch(setCurrentProfile(response))
-            dispatch(setLoadingStatus(false))
+            dispatch(setProfileLoadingStatus(false))
         })
     }
 }
@@ -38,5 +46,20 @@ export const authenticateUser = () => {
         authenticationRequest().then(response => {
             dispatch(setAuthenticatedUser(response))
         })
+    }
+}
+
+export const toggleFollow = (userId, followingStatus) => {
+    return dispatch => {
+        dispatch(setFollowButtonLoadingStatus(true))
+        // if (followingStatus) {
+        //     unfollowRequest(userId)
+        //         .then(setFollowingStatus(userId, !followingStatus))
+        //         .then(dispatch(setFollowButtonLoadingStatus(false)))
+        // } else {
+        //     followRequest(userId)
+        //         .then(setFollowingStatus(userId, !followingStatus))
+        //         .then(dispatch(setFollowButtonLoadingStatus(false)))
+        // }gi
     }
 }

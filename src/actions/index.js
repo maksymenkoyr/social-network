@@ -2,13 +2,13 @@ import {
     ADD_PUBLICATION,
     CHANGE_PUBLICATION_INPUT,
     SET_USERS,
-    TOGGLE_FOLLOWING,
     SET_CURRENT_PAGE,
     AUTHENTICATION,
-    SET_RESPONSE_WAITING,
-    SET_LOADING_STATUS,
+    SET_PROFILE_LOADING_STATUS,
     SET_CURRENT_PROFILE,
     SET_AUTHENTICATED_USER,
+    SET_FOLLOWING_STATUS,
+    SET_FOLLOW_BUTTON_LOADING_STATUS,
 } from '../constants/actionTypes'
 
 export const addPublication = () => ({
@@ -26,9 +26,10 @@ export const setUsers = (users, count) => ({
     count: count,
 })
 
-export const toggleFollowing = id => ({
-    type: TOGGLE_FOLLOWING,
+export const setFollowingStatus = (id, followingStatus) => ({
+    type: SET_FOLLOWING_STATUS,
     userId: id,
+    followingStatus,
 })
 
 export const setCurrentPage = pageNumber => ({
@@ -46,13 +47,12 @@ export const authenticate = authenticatedUser => ({
     authenticatedUser,
 })
 
-export const setResponseWaiting = target => ({
-    type: SET_RESPONSE_WAITING,
-    target,
+export const setProfileLoadingStatus = loadingInProgress => ({
+    type: SET_PROFILE_LOADING_STATUS,
+    loadingInProgress,
 })
-
-export const setLoadingStatus = loadingInProgress => ({
-    type: SET_LOADING_STATUS,
+export const setFollowButtonLoadingStatus = loadingInProgress => ({
+    type: SET_FOLLOW_BUTTON_LOADING_STATUS,
     loadingInProgress,
 })
 

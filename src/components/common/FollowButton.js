@@ -1,16 +1,17 @@
 import React from 'react'
 import Button from '@material-ui/core/button'
 
-const FollowButton = ({followed, waitForResponse, toggleFollow, className}) => {
-    console.log(className)
+const FollowButton = ({followed, loadingStatus, toggleFollow, className, userId}) => {
     return (
         <Button
             className={className}
             size='small'
-            disabled={waitForResponse}
+            disabled={loadingStatus}
             variant='contained'
             color='primary'
-            onClick={toggleFollow}
+            onClick={() => {
+                toggleFollow(userId, followed)
+            }}
         >
             {followed ? 'Unfollow' : 'Follow'}
         </Button>

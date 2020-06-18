@@ -1,4 +1,5 @@
 import {connect} from 'react-redux'
+import {toggleFollow} from '../thunks/thunks'
 import React from 'react'
 import UserPreview from '../components/AppContent/Users/UserPreview'
 import ListPreloader from '../components/common/preloaders/ListPreloader'
@@ -14,7 +15,6 @@ class Users extends React.Component {
             pages.push(
                 <li
                     value={i}
-                    className={this.props.currentPage === i && 'users__pages-item--current'}
                     onClick={e =>
                         this.props.getCurrentPage(e.currentTarget.value, this.props.pageSize)
                     }
@@ -27,25 +27,20 @@ class Users extends React.Component {
             }
         }
         return (
-            <main className='app__content users'>
-                {this.props.waitResponse.usersList ? (
-                    <ListPreloader></ListPreloader>
-                ) : (
-                    <>
-                        <ul className='users__pages-list'>{pages}</ul>
-                        <ul className='users__list'>
-                            {this.props.users.map(user => {
-                                return (
-                                    <UserPreview
-                                        user={user}
-                                        toggleFollowing={this.props.toggleFollowing}
-                                    />
-                                )
-                            })}
-                        </ul>
-                    </>
-                )}
-            </main>
+            <>
+                <ul className='users__pages-list'>{pages}</ul>
+                <ul className='users__list'>
+                    {this.props.users.map(user => {
+                        return (
+                            <UserPreview
+                                user={user}
+                                toggleFollow={this.props.toggleFollow}
+                                inLoading={this.props.inLoading}
+                            />
+                        )
+                    })}
+                </ul>
+            </>
         )
     }
 }
@@ -56,6 +51,7 @@ const mapStateToProps = state => ({
     totalUsersCount: state.usersPage.totalUsersCount,
     currentPage: state.usersPage.currentPage,
     waitResponse: state.usersPage.waitResponse,
+    inLoading: state.usersPage.inLoading,
 })
 
 // const mapDispatchToProps = dispatch => ({
@@ -73,4 +69,5 @@ const mapStateToProps = state => ({
 export default connect(mapStateToProps, {
     getUsers,
     getCurrentPage,
+    toggleFollow,
 })(Users)

@@ -2,7 +2,7 @@ import {
     ADD_PUBLICATION,
     CHANGE_PUBLICATION_INPUT,
     SET_CURRENT_PROFILE,
-    SET_LOADING_STATUS,
+    SET_PROFILE_LOADING_STATUS,
     SET_AUTHENTICATED_USER,
 } from '../constants/actionTypes'
 
@@ -37,7 +37,7 @@ const profileReducer = (state = initialState, action) => {
         case SET_CURRENT_PROFILE: {
             return {...state, currentProfile: action.currentProfile}
         }
-        case SET_LOADING_STATUS: {
+        case SET_PROFILE_LOADING_STATUS: {
             return {
                 ...state,
                 inLoading: action.loadingInProgress,

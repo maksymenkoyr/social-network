@@ -22,10 +22,10 @@ export const getProfileRequest = userId => {
     })
 }
 
-export const follow = userId => {
+export const followRequest = userId => {
     return baseRequest.post(`follow/${userId}`)
 }
-export const unFollow = userId => {
+export const unfollowRequest = userId => {
     return baseRequest.delete(`follow/${userId}`)
 }
 export const followStatus = userId => {
