@@ -21,6 +21,9 @@ class App extends React.Component {
                     <MainNav />
                     <main className='app__content'>
                         <Switch>
+                            <Route path='/login'>
+                                <p>Login</p>
+                            </Route>
                             <Route path='/profile/:userId?'>
                                 <Profile />
                             </Route>

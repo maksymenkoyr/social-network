@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {
     SET_CURRENT_PAGE,
     SET_USERS,
@@ -14,17 +13,10 @@ let initialState = {
     inLoading: {
         followButton: false,
     },
-=======
-import {GET_USERS, TOGGLE_FOLLOW} from '../constants/actionTypes'
-
-let initialState = {
-    users: [{name: 'jojo'}]
->>>>>>> c6dc7ded801555ec9de26ef0600dc43e2b7d936d
 }
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-<<<<<<< HEAD
         case SET_FOLLOWING_STATUS:
             return {
                 ...state,
@@ -53,26 +45,6 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 currentPage: action.pageNumber,
-=======
-        case GET_USERS:
-            return {
-                ...state,
-                users: action.users
-            }
-        case TOGGLE_FOLLOW:
-            return {
-                ...state,
-                users: state.users.map(user => {
-                    if (user.userdId === action.userId) {
-                        return {
-                            ...user,
-                            followed: !user.followed
-                        }
-                    } else {
-                        return user
-                    }
-                })
->>>>>>> c6dc7ded801555ec9de26ef0600dc43e2b7d936d
             }
         default:
             return state

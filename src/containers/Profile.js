@@ -2,10 +2,11 @@ import React from 'react'
 
 // import ProfilePublications from '../components/AppContent/Profile/ProfilePublications'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Redirect} from 'react-router-dom'
 import ProfileInfo from '../components/AppContent/Profile/ProfileInfo'
 import {defineCurrentProfile} from '../thunks/thunks'
 import ListPreloader from '../components/common/preloaders/ListPreloader'
+import {addRedirectForNonAuthorized} from '../HOCs/HOCs'
 
 class Profile extends React.Component {
     componentDidMount() {
@@ -35,4 +36,6 @@ const mapStateToProps = state => ({
     authenticatedUser: state.profilePage.authenticatedUser,
 })
 
-export default connect(mapStateToProps, {defineCurrentProfile})(withRouter(Profile))
+export default connect(mapStateToProps, {defineCurrentProfile})(
+    withRouter(addRedirectForNonAuthorized(Profile))
+)
