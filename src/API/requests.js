@@ -6,7 +6,7 @@ const baseRequest = axios.create({
     headers: {
         'API-KEY': '97f5b938-e7eb-4074-8770-937b717465c8',
     },
-    withCredentials: true,
+    // withCredentials: true,
 })
 
 export const getUsersRequest = (currentPage = 1, pageSize = 5) => {

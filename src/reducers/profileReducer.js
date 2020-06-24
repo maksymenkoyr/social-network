@@ -15,11 +15,7 @@ let initialState = {
     inputValue: '',
     currentProfile: {},
     inLoading: true,
-    authenticatedUser: {
-        id: '',
-        login: '',
-        email: '',
-    },
+   
 }
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -43,13 +39,6 @@ const profileReducer = (state = initialState, action) => {
                 inLoading: action.loadingInProgress,
             }
         }
-        case SET_AUTHENTICATED_USER: {
-            return {
-                ...state,
-                authenticatedUser: action.user,
-            }
-        }
-
         default:
             return state
     }

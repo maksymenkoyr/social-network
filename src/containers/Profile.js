@@ -2,17 +2,26 @@ import React from 'react'
 
 // import ProfilePublications from '../components/AppContent/Profile/ProfilePublications'
 import {connect} from 'react-redux'
-import {withRouter, Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import ProfileInfo from '../components/AppContent/Profile/ProfileInfo'
 import {defineCurrentProfile} from '../thunks/thunks'
 import ListPreloader from '../components/common/preloaders/ListPreloader'
 import {addRedirectForNonAuthorized} from '../HOCs/HOCs'
 
 class Profile extends React.Component {
-    componentDidMount() {
-        this.props.defineCurrentProfile(
-            this.props.match.params.userId || this.props.authenticatedUser.id
-        )
+    componentWillMount() {
+        if (this.props.authenticatedUser.id) {
+            this.props.defineCurrentProfile(
+                this.props.match.params.userId || this.props.authenticatedUser.id
+            )
+        }
+    }
+    componentDidUpdate(prevProps) {
+        if (this.props.authenticatedUser.id !== prevProps.authenticatedUser.id) {
+            this.props.defineCurrentProfile(
+                this.props.match.params.userId || this.props.authenticatedUser.id
+            )
+        }
     }
     render() {
         if (this.props.inLoading) {
@@ -33,7 +42,7 @@ const mapStateToProps = state => ({
     inputValue: state.profilePage.inputValue,
     currentProfile: state.profilePage.currentProfile,
     inLoading: state.profilePage.inLoading,
-    authenticatedUser: state.profilePage.authenticatedUser,
+    authenticatedUser: state.authentication.authenticatedUser,
 })
 
 export default connect(mapStateToProps, {defineCurrentProfile})(

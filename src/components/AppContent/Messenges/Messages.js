@@ -1,5 +1,7 @@
 import React from 'react'
-import "./Messages.scss"
+import './Messages.scss'
+import {connect} from 'react-redux'
+import {addRedirectForNonAuthorized} from '../../../HOCs/HOCs'
 
 const Messages = () => {
     return (
@@ -20,4 +22,7 @@ const Messages = () => {
     )
 }
 
-export default Messages
+const mapStateToProps = state => ({
+    authenticatedUser: state.authentication.authenticatedUser,
+})
+export default connect(mapStateToProps)(addRedirectForNonAuthorized(Messages))

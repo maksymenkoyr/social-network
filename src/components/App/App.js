@@ -6,12 +6,12 @@ import {HashRouter, Switch, Route} from 'react-router-dom'
 import Messages from '../AppContent/Messenges/Messages'
 import Profile from '../../containers/Profile'
 import Users from '../../containers/Users'
-import {REQUEST, API_KEY} from '../../constants/serverAPI'
-import * as axios from 'axios'
 import {authenticateUser} from '../../thunks/thunks'
+import {connect} from 'react-redux'
+import SignInPage from '../SignIn/SignInPage'
 class App extends React.Component {
     componentDidMount() {
-        this.props.dispatch(authenticateUser())
+        this.props.authenticateUser()
     }
     render() {
         return (
@@ -22,7 +22,7 @@ class App extends React.Component {
                     <main className='app__content'>
                         <Switch>
                             <Route path='/login'>
-                                <p>Login</p>
+                                <SignInPage />
                             </Route>
                             <Route path='/profile/:userId?'>
                                 <Profile />
@@ -41,4 +41,4 @@ class App extends React.Component {
     }
 }
 
-export default App
+export default connect(0, {authenticateUser})(App)
