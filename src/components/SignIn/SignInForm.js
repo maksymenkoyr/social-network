@@ -1,18 +1,26 @@
 import React from 'react'
-import {reduxForm, Field} from 'redux-form'
 import {Input} from '../common/CostumFormComponents'
+import {useFormik} from 'formik'
 
-const required = value => (value ? undefined : true)
-
-const SignInForm = ({handleSubmit}) => {
+const SignInForm = () => {
+    const signIn = useFormik({
+        initialValues: {
+            email: '',
+            password: '',
+            remberMe: false,
+        },
+        onSubmit: values => {
+            console.log(values)
+        },
+    })
     return (
-        <form onSubmit={handleSubmit}>
-            <Field placeholder='login' name='login' component={Input} validate={[required]}></Field>
-            <Field placeholder='password' name='password' component='input' type='password'></Field>
-            <Field name='remberMe' component='input' type='checkbox'></Field>
+        <form className='sign-in-page__form'>
+            <input placeholder='login' name='login' type='text' />
+            <input placeholder='password' name='password' type='password' />
+            <input name='remberMe' type='checkbox' />
             <button type='submit'>sign in</button>
         </form>
     )
 }
 
-export default reduxForm({form: 'signIn'})(SignInForm)
+export default SignInForm

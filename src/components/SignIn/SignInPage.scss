@@ -1,0 +1,13 @@
+@import "../../_style-variables.scss";
+.sign-in-page {
+    padding: 20px;
+    width: 100%;
+    background-color: $app-primary;
+
+    &__form {
+        margin: 0 auto;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+    }
+}
