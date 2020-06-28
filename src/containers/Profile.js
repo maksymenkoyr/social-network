@@ -7,6 +7,7 @@ import ProfileInfo from '../components/AppContent/Profile/ProfileInfo'
 import {defineCurrentProfile} from '../thunks/thunks'
 import ListPreloader from '../components/common/preloaders/ListPreloader'
 import {addRedirectForNonAuthorized} from '../HOCs/HOCs'
+import {getAuthenticatedUser} from '../selectors/selectors'
 
 class Profile extends React.Component {
     componentWillMount() {
@@ -42,7 +43,7 @@ const mapStateToProps = state => ({
     inputValue: state.profilePage.inputValue,
     currentProfile: state.profilePage.currentProfile,
     inLoading: state.profilePage.inLoading,
-    authenticatedUser: state.authentication.authenticatedUser,
+    authenticatedUser: getAuthenticatedUser(state),
 })
 
 export default connect(mapStateToProps, {defineCurrentProfile})(

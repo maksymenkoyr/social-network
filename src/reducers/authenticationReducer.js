@@ -6,13 +6,14 @@ let initialState = {
         login: '',
         email: '',
     },
+    authenticated: false,
 }
 const authenticationReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_AUTHENTICATED_USER: {
             return {
-                ...state,
                 authenticatedUser: action.user,
+                authenticated: true,
             }
         }
         default:

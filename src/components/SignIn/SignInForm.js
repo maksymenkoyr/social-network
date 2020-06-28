@@ -2,14 +2,18 @@ import React from 'react'
 import {useForm} from 'react-hook-form'
 import {signIn} from '../../thunks/thunks'
 import {connect} from 'react-redux'
+import {getAuthenticated} from '../../selectors/selectors'
+import {Redirect} from 'react-router-dom'
 
-const SignInForm = ({signIn}) => {
+const SignInForm = ({signIn, authenticated}) => {
     const {register, handleSubmit, errors, setError} = useForm({
         mode: 'onBlur',
     })
     const onSubmit = data => {
-        console.log(data)
         signIn(data, setError)
+    }
+    if (authenticated) {
+        return <Redirect to='/profile' />
     }
 
     return (
@@ -60,5 +64,7 @@ const SignInForm = ({signIn}) => {
         </form>
     )
 }
-
-export default connect(null, {signIn})(SignInForm)
+const mapStateToProps = state => ({
+    authenticated: getAuthenticated(state),
+})
+export default connect(mapStateToProps, {signIn})(SignInForm)
