@@ -4,6 +4,8 @@ import {
     authenticationRequest,
     followRequest,
     unfollowRequest,
+    SignInRequest,
+    signInRequest,
 } from '../API/requests'
 import {
     setUsers,
@@ -61,5 +63,17 @@ export const toggleFollow = (userId, followingStatus) => {
         //         .then(setFollowingStatus(userId, !followingStatus))
         //         .then(dispatch(setFollowButtonLoadingStatus(false)))
         // }gi
+    }
+}
+
+export const signIn = (data, setError) => {
+    return dispatch => {
+        signInRequest(data).then(response => {
+            if (response.resultCode === 0) {
+                dispatch.authenticateUser()
+            } else {
+                return setError('server', 'incorect signIn data', 'Invalid email or password')
+            }
+        })
     }
 }
