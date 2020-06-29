@@ -4,3 +4,7 @@ export const getAuthenticatedUser = state => {
 export const getAuthenticated = state => {
     return state.authentication.authenticated
 }
+
+export const getInitialize = state => {
+    return state.global.initialized
+}

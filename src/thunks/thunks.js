@@ -9,13 +9,14 @@ import {
 } from '../API/requests'
 import {
     setUsers,
+    initialize,
     setFollowingStatus,
     setCurrentPage,
     setProfileLoadingStatus,
     setCurrentProfile,
     setAuthenticatedUser,
     setFollowButtonLoadingStatus,
-} from '../actions'
+} from '../actions/actionCreator'
 
 export const getUsers = (pageNumber, pageSize) => {
     return dispatch => {
@@ -45,7 +46,7 @@ export const defineCurrentProfile = userId => {
 
 export const authenticateUser = () => {
     return dispatch => {
-        authenticationRequest().then(response => {
+        return authenticationRequest().then(response => {
             dispatch(setAuthenticatedUser(response))
         })
     }
@@ -70,10 +71,19 @@ export const signIn = (data, setError) => {
     return dispatch => {
         signInRequest(data).then(response => {
             if (response.resultCode === 0) {
-                dispatch.authenticateUser()
+                dispatch(authenticateUser())
             } else {
                 return setError('server', 'incorect signIn data', 'Invalid email or password')
             }
+        })
+    }
+}
+
+export const initApp = () => {
+    return dispatch => {
+        debugger
+        Promise.all([dispatch(authenticateUser())]).then(() => {
+            dispatch(initialize())
         })
     }
 }

@@ -9,6 +9,7 @@ import {
     SET_AUTHENTICATED_USER,
     SET_FOLLOWING_STATUS,
     SET_FOLLOW_BUTTON_LOADING_STATUS,
+    INITIALIZE,
 } from '../constants/actionTypes'
 
 export const addPublication = () => ({
@@ -59,4 +60,8 @@ export const setFollowButtonLoadingStatus = loadingInProgress => ({
 export const setAuthenticatedUser = user => ({
     type: SET_AUTHENTICATED_USER,
     user,
+})
+
+export const initialize = () => ({
+    type: INITIALIZE,
 })
