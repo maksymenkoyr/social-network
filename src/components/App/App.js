@@ -1,20 +1,20 @@
 import React, {useEffect} from 'react'
 import './App.scss'
+import './../../components/common/Buttons/Button.scss'
 import Header from '../Header/Header'
 import MainNav from '../MainNav/MainNav'
 import {HashRouter, Switch, Route} from 'react-router-dom'
 import Messages from '../AppContent/Messenges/Messages'
 import Profile from '../../containers/Profile'
 import Users from '../../containers/Users'
-import {authenticateUser} from '../../thunks/thunks'
 import {connect} from 'react-redux'
-import SignInPage from '../SignIn/SignInPage'
-import {getInitialize} from '../../selectors/selectors'
-import {initialize} from '../../actions/actionCreator'
+import SignInPage from '../SignInPage/SignInPage'
+import {getInitStatus} from '../../selectors/selectors'
+import {initApp} from '../../thunks/thunks'
 
-const App = ({initialized, initialize}) => {
+const App = ({initApp, initialized}) => {
     useEffect(() => {
-        initialize()
+        initApp()
     }, [])
     if (!initialized) {
         return null
@@ -46,6 +46,6 @@ const App = ({initialized, initialize}) => {
 }
 
 const mapStateToProps = state => ({
-    initialized: getInitialize(state),
+    initialized: getInitStatus(state),
 })
-export default connect(mapStateToProps, {initialize})(App)
+export default connect(mapStateToProps, {initApp})(App)

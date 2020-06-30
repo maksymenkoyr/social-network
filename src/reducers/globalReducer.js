@@ -7,8 +7,6 @@ const initialState = {
 const globalReducer = (state = initialState, action) => {
     switch (action.type) {
         case INITIALIZE: {
-            
-
             return {
                 initialized: true,
             }

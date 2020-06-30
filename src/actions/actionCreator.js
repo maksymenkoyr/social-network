@@ -63,5 +63,6 @@ export const setAuthenticatedUser = user => ({
 })
 
 export const initialize = () => ({
+    
     type: INITIALIZE,
 })

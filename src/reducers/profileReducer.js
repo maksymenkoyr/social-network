@@ -15,7 +15,6 @@ let initialState = {
     inputValue: '',
     currentProfile: {},
     inLoading: true,
-   
 }
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {

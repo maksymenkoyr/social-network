@@ -36,10 +36,9 @@ export const getCurrentPage = (pageNumber, pageSize) => {
 
 export const defineCurrentProfile = userId => {
     return dispatch => {
-        dispatch(setProfileLoadingStatus(true))
-        getProfileRequest(userId).then(response => {
+        return getProfileRequest(userId).then(response => {
+            console.log('prof')
             dispatch(setCurrentProfile(response))
-            dispatch(setProfileLoadingStatus(false))
         })
     }
 }
@@ -48,6 +47,7 @@ export const authenticateUser = () => {
     return dispatch => {
         return authenticationRequest().then(response => {
             dispatch(setAuthenticatedUser(response))
+            return response
         })
     }
 }
@@ -81,9 +81,11 @@ export const signIn = (data, setError) => {
 
 export const initApp = () => {
     return dispatch => {
-        debugger
-        Promise.all([dispatch(authenticateUser())]).then(() => {
-            dispatch(initialize())
+        dispatch(authenticateUser()).then(authenticatedUser => {
+            dispatch(defineCurrentProfile(authenticatedUser.id)).then(() => {
+                console.log('init')
+                dispatch(initialize())
+            })
         })
     }
 }

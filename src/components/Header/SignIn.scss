@@ -1,0 +1,22 @@
+@import "../../_style-variables.scss";
+
+.signIn {
+    display: flex;
+    align-items: center;
+    &__button {
+        height: 100%;
+        width: 80px;
+        &--logout {
+            background-color: $button-secondary;
+            color: #000;
+            text-transform: none;
+        }
+    }
+    &__signed-in-user-name {
+        margin: 0 5px;
+    }
+
+    &__signed-in-user-image {
+        height: 80%;
+    }
+}

@@ -1,0 +1,11 @@
+@import "./../../../_style-variables.scss";
+
+.button {
+    border: none;
+    border-radius: $form-border-radius;
+    background-color: $app-secondary;
+    align-self: center;
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+}

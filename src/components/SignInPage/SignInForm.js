@@ -2,8 +2,9 @@ import React from 'react'
 import {useForm} from 'react-hook-form'
 import {signIn} from '../../thunks/thunks'
 import {connect} from 'react-redux'
-import {getAuthenticated} from '../../selectors/selectors'
+import {getAuthenticationStatus} from '../../selectors/selectors'
 import {Redirect} from 'react-router-dom'
+import Button from '../common/Buttons/Button'
 
 const SignInForm = ({signIn, authenticated}) => {
     const {register, handleSubmit, errors, setError} = useForm({
@@ -55,9 +56,9 @@ const SignInForm = ({signIn, authenticated}) => {
                 Remember me
             </label>
 
-            <button className='sign-in-form__button' type='submit' ref={register}>
+            {/* <Button name='sign-in' className='sign-in-form__button' type='submit' ref={register}>
                 sign in
-            </button>
+            </Button> */}
             {errors.server && (
                 <span className='sign-in-form__response-alert'>{errors.server?.message}</span>
             )}
@@ -65,6 +66,6 @@ const SignInForm = ({signIn, authenticated}) => {
     )
 }
 const mapStateToProps = state => ({
-    authenticated: getAuthenticated(state),
+    authenticated: getAuthenticationStatus(state),
 })
 export default connect(mapStateToProps, {signIn})(SignInForm)
