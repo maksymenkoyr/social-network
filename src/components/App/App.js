@@ -15,7 +15,7 @@ import {initApp} from '../../thunks/thunks'
 const App = ({initApp, initialized}) => {
     useEffect(() => {
         initApp()
-    }, [])
+    }, [initApp])
     if (!initialized) {
         return null
     }

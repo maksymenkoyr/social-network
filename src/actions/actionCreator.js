@@ -4,7 +4,7 @@ import {
     SET_USERS,
     SET_CURRENT_PAGE,
     AUTHENTICATION,
-    SET_PROFILE_LOADING_STATUS,
+    SET_PROFILE_LOADED,
     SET_CURRENT_PROFILE,
     SET_AUTHENTICATED_USER,
     SET_FOLLOWING_STATUS,
@@ -48,9 +48,9 @@ export const authenticate = authenticatedUser => ({
     authenticatedUser,
 })
 
-export const setProfileLoadingStatus = loadingInProgress => ({
-    type: SET_PROFILE_LOADING_STATUS,
-    loadingInProgress,
+export const setProfileLoaded = loaded => ({
+    type: SET_PROFILE_LOADED,
+    loaded,
 })
 export const setFollowButtonLoadingStatus = loadingInProgress => ({
     type: SET_FOLLOW_BUTTON_LOADING_STATUS,
@@ -63,6 +63,5 @@ export const setAuthenticatedUser = user => ({
 })
 
 export const initialize = () => ({
-    
     type: INITIALIZE,
 })

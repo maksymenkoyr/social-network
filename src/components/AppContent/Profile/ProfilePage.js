@@ -4,8 +4,8 @@ import Button from '../../common/Buttons/Button'
 import ProfileHeadline from './ProfileHeadline'
 
 const ProfilePage = props => {
-
     return (
+        
         <div className='profile-page'>
             <div className='profile-page__photo-follow'>
                 <img

@@ -11,6 +11,14 @@ export const getAuthenticationStatus = state => {
     return state.authentication.authenticated
 }
 //--------------Profile------------------------------
+export const getProfile = state => {
+    return state.profilePage.profile
+}
+
 export const getProfileSmallPhoto = state => {
-    return state.profilePage.currentProfile.photos.small
+    return state.profilePage.profile.photos.small
+}
+
+export const getProfileLoaded = state => {
+    return state.profilePage.profileLoaded
 }

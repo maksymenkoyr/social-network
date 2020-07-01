@@ -6,13 +6,14 @@ import {
     unfollowRequest,
     SignInRequest,
     signInRequest,
+    getHeadlineRequest,
 } from '../API/requests'
 import {
     setUsers,
     initialize,
     setFollowingStatus,
     setCurrentPage,
-    setProfileLoadingStatus,
+    setProfileLoaded,
     setCurrentProfile,
     setAuthenticatedUser,
     setFollowButtonLoadingStatus,
@@ -34,11 +35,11 @@ export const getCurrentPage = (pageNumber, pageSize) => {
     }
 }
 
-export const defineCurrentProfile = userId => {
+export const defineProfile = userId => {
     return dispatch => {
         return getProfileRequest(userId).then(response => {
-            console.log('prof')
             dispatch(setCurrentProfile(response))
+            dispatch(setProfileLoaded(true))
         })
     }
 }
@@ -82,10 +83,15 @@ export const signIn = (data, setError) => {
 export const initApp = () => {
     return dispatch => {
         dispatch(authenticateUser()).then(authenticatedUser => {
-            dispatch(defineCurrentProfile(authenticatedUser.id)).then(() => {
-                console.log('init')
+            dispatch(defineProfile(authenticatedUser.id)).then(() => {
                 dispatch(initialize())
             })
         })
+    }
+}
+
+export const getHeadline = () => {
+    return dispatch => {
+        getHeadlineRequest()
     }
 }

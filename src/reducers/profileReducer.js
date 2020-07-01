@@ -2,7 +2,7 @@ import {
     ADD_PUBLICATION,
     CHANGE_PUBLICATION_INPUT,
     SET_CURRENT_PROFILE,
-    SET_PROFILE_LOADING_STATUS,
+    SET_PROFILE_LOADED,
     SET_AUTHENTICATED_USER,
 } from '../constants/actionTypes'
 
@@ -12,9 +12,8 @@ let initialState = {
         {publicationContent: 'go go go'},
         {publicationContent: 'one'},
     ],
-    inputValue: '',
-    currentProfile: {},
-    inLoading: true,
+    profile: {},
+    profileLoaded: false,
 }
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -30,12 +29,12 @@ const profileReducer = (state = initialState, action) => {
             return newState
         }
         case SET_CURRENT_PROFILE: {
-            return {...state, currentProfile: action.currentProfile}
+            return {...state, profile: action.currentProfile}
         }
-        case SET_PROFILE_LOADING_STATUS: {
+        case SET_PROFILE_LOADED: {
             return {
                 ...state,
-                inLoading: action.loadingInProgress,
+                profileLoaded: action.loaded,
             }
         }
         default:
