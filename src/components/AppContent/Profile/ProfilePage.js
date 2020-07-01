@@ -1,13 +1,13 @@
 import React from 'react'
 import './ProfilePage.scss'
 import Button from '../../common/Buttons/Button'
+import ProfileHeadline from './ProfileHeadline'
 
 const ProfilePage = props => {
-    console.log(props)
 
     return (
         <div className='profile-page'>
-            <div class='profile-page__photo-follow'>
+            <div className='profile-page__photo-follow'>
                 <img
                     src={props.photos.large || 'images/defaultAvatar.svg'}
                     alt=''
@@ -17,7 +17,7 @@ const ProfilePage = props => {
             </div>
             <div className='profile-page__info'>
                 <p className='profile-page__name'>{props.fullName}</p>
-                <p className='profile-page__status'>Lorem ipsum dolor sit amet.</p>
+                <ProfileHeadline />
                 <div className='profile-page__contacts'>
                     <span className='contacts__title'>Contacts:</span>
                 </div>

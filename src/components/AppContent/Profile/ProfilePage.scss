@@ -24,10 +24,12 @@
         // border-radius: $secondary-border-radius;
     }
     &__info {
+        position: relative;
         @extend %primary-card-style;
         grid-column: 5/13;
         display: flex;
         flex-direction: column;
+        align-items: stretch;
     }
     &__name {
         align-self: flex-start;
@@ -36,8 +38,7 @@
     }
 
     &__status {
-        margin: 0;
-        align-self: flex-start;
+        width: 100%;
     }
     &__contacts {
         flex-grow: 1;
@@ -45,7 +46,7 @@
 
     &__job {
         border: 1px solid #bbb;
-        background-color: #f3f6f8;
+        background-color: $app-secondary-background;
         border-radius: $secondary-border-radius;
         min-height: 30px;
         width: 100%;
@@ -62,5 +63,52 @@
     &__title {
         color: #aaa;
         font-size: 12px;
+    }
+}
+
+.headline {
+    padding: 2.5px 5px;
+    cursor: pointer;
+    &:hover {
+        background-color: $app-secondary-background;
+    }
+    &__title {
+        word-break: break-all;
+        margin: 0;
+        min-height: 20px;
+    }
+
+    &--editing {
+        .headline-form {
+            transform: translate(-50%, 0);
+            left: 50%;
+            width: 105%;
+            height: 70px;
+            position: absolute;
+            @extend %primary-card-style;
+            padding: 5px;
+            box-shadow: 0px 0px 5px 0px #aaa;
+            display: flex;
+            flex-wrap: wrap;
+            &__title {
+                color: #aaa;
+                width: 100%;
+                margin: 0;
+            }
+            &__input {
+                border: 1px solid #aaa;
+                border-radius: $secondary-border-radius;
+                flex-grow: 1;
+                margin-right: 5px;
+                height: 30px;
+                align-self: center;
+            }
+
+            &__button {
+                height: 25px;
+                align-self: center;
+                border-radius: $secondary-border-radius;
+            }
+        }
     }
 }
