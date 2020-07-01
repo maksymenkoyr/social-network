@@ -1,0 +1,34 @@
+import React from 'react'
+import './ProfilePage.scss'
+import Button from '../../common/Buttons/Button'
+
+const ProfilePage = props => {
+    console.log(props)
+
+    return (
+        <div className='profile-page'>
+            <div class='profile-page__photo-follow'>
+                <img
+                    src={props.photos.large || 'images/defaultAvatar.svg'}
+                    alt=''
+                    className='profile-page__avatar'
+                />
+                <Button className='profile-page__follow-button'>Follow</Button>
+            </div>
+            <div className='profile-page__info'>
+                <p className='profile-page__name'>{props.fullName}</p>
+                <p className='profile-page__status'>Lorem ipsum dolor sit amet.</p>
+                <div className='profile-page__contacts'>
+                    <span className='contacts__title'>Contacts:</span>
+                </div>
+                <div className='profile-page__job'>
+                    <span className=''>Open to job opportunities</span>
+                    <br />
+                    Junior front-end developer
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default ProfilePage

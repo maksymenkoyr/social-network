@@ -1,5 +1,5 @@
 import React from 'react'
-import './ListPreloaders.scss'
+import './CommonPreloader.scss'
 
 function ListPreloader() {
     return (

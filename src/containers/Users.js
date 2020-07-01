@@ -2,7 +2,7 @@ import {connect} from 'react-redux'
 import {toggleFollow} from '../thunks/thunks'
 import React from 'react'
 import UserPreview from '../components/AppContent/Users/UserPreview'
-import ListPreloader from '../components/common/preloaders/ListPreloader'
+import ListPreloader from '../components/common/preloaders/CommonPreloader'
 import {getUsers, getCurrentPage} from '../thunks/thunks'
 class Users extends React.Component {
     componentDidMount() {

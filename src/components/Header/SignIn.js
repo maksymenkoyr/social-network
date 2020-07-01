@@ -11,7 +11,7 @@ const SignIn = ({authenticatedUserLogin, authenticationStatus, photo}) => {
             ></img>
             <p className='signIn__signed-in-user-name'>{authenticatedUserLogin}</p>
             <Button
-                className={'signIn__button ' + authenticationStatus && 'signIn__button--logout'}
+                className={'signIn__button ' + (authenticationStatus && 'signIn__button--logout')}
             >
                 {authenticationStatus ? 'Sign Out' : 'Sign In'}
             </Button>
