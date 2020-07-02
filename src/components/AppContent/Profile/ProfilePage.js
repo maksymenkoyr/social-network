@@ -2,10 +2,10 @@ import React from 'react'
 import './ProfilePage.scss'
 import Button from '../../common/Buttons/Button'
 import ProfileHeadline from './ProfileHeadline'
+import {getHeadlineRequest} from '../../../API/requests'
 
-const ProfilePage = props => {
+const ProfilePage = ({setHeadline, profileHeadline, ...props}) => {
     return (
-        
         <div className='profile-page'>
             <div className='profile-page__photo-follow'>
                 <img
@@ -17,7 +17,7 @@ const ProfilePage = props => {
             </div>
             <div className='profile-page__info'>
                 <p className='profile-page__name'>{props.fullName}</p>
-                <ProfileHeadline />
+                <ProfileHeadline setHeadline={setHeadline} profileHeadline={profileHeadline} />
                 <div className='profile-page__contacts'>
                     <span className='contacts__title'>Contacts:</span>
                 </div>

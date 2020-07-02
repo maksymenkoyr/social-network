@@ -22,3 +22,7 @@ export const getProfileSmallPhoto = state => {
 export const getProfileLoaded = state => {
     return state.profilePage.profileLoaded
 }
+
+export const getProfileHeadline = state => {
+    return state.profilePage.headline
+}

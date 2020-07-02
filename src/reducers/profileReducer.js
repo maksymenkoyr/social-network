@@ -4,6 +4,7 @@ import {
     SET_CURRENT_PROFILE,
     SET_PROFILE_LOADED,
     SET_AUTHENTICATED_USER,
+    SET_HEADLINE,
 } from '../constants/actionTypes'
 
 let initialState = {
@@ -12,6 +13,7 @@ let initialState = {
         {publicationContent: 'go go go'},
         {publicationContent: 'one'},
     ],
+    headline: '',
     profile: {},
     profileLoaded: false,
 }
@@ -35,6 +37,12 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profileLoaded: action.loaded,
+            }
+        }
+        case SET_HEADLINE: {
+            return {
+                ...state,
+                headline: action.headline,
             }
         }
         default:

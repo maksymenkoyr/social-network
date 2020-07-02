@@ -1,9 +1,10 @@
 import React, {useState} from 'react'
 import HeadlineForm from './HeadlineForm'
+import ProfilePublications from './ProfilePublications'
 
-const Profileheadline = () => {
+const Profileheadline = ({setHeadline, profileHeadline}) => {
     const [editMode, setEditMode] = useState(false)
-    const [headlineValue, setHeadlineValue] = useState()
+    const [headlineValue, setHeadlineValue] = useState(profileHeadline)
 
     return (
         <div
@@ -11,7 +12,13 @@ const Profileheadline = () => {
             className={'profile-page__headline headline ' + (editMode ? 'headline--editing' : '')}
         >
             {editMode ? (
-                <HeadlineForm setEditMode={setEditMode} setHeadlineValue={setHeadlineValue} />
+                <HeadlineForm
+                    setHeadline={setHeadline}
+                    setEditMode={setEditMode}
+                    setHeadlineValue={setHeadlineValue}
+                    profileHeadline={profileHeadline}
+                    headlineValue={headlineValue}
+                />
             ) : (
                 <p className='headline__title'>{headlineValue}</p>
             )}

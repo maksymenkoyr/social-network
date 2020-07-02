@@ -10,6 +10,7 @@ import {
     SET_FOLLOWING_STATUS,
     SET_FOLLOW_BUTTON_LOADING_STATUS,
     INITIALIZE,
+    SET_HEADLINE,
 } from '../constants/actionTypes'
 
 export const addPublication = () => ({
@@ -64,4 +65,9 @@ export const setAuthenticatedUser = user => ({
 
 export const initialize = () => ({
     type: INITIALIZE,
+})
+
+export const setProfileHeadline = headline => ({
+    type: SET_HEADLINE,
+    headline,
 })

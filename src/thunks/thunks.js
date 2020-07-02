@@ -7,6 +7,7 @@ import {
     SignInRequest,
     signInRequest,
     getHeadlineRequest,
+    setHeadlineRequest,
 } from '../API/requests'
 import {
     setUsers,
@@ -17,6 +18,7 @@ import {
     setCurrentProfile,
     setAuthenticatedUser,
     setFollowButtonLoadingStatus,
+    setProfileHeadline,
 } from '../actions/actionCreator'
 
 export const getUsers = (pageNumber, pageSize) => {
@@ -37,10 +39,13 @@ export const getCurrentPage = (pageNumber, pageSize) => {
 
 export const defineProfile = userId => {
     return dispatch => {
-        return getProfileRequest(userId).then(response => {
-            dispatch(setCurrentProfile(response))
-            dispatch(setProfileLoaded(true))
-        })
+        return Promise.all([getProfileRequest(userId), getHeadlineRequest(userId)]).then(
+            response => {
+                dispatch(setCurrentProfile(response[0]))
+                dispatch(setProfileLoaded(true))
+                dispatch(setProfileHeadline(response[1]))
+            }
+        )
     }
 }
 
@@ -90,8 +95,20 @@ export const initApp = () => {
     }
 }
 
-export const getHeadline = () => {
+export const setHeadline = headline => {
     return dispatch => {
-        getHeadlineRequest()
+        setHeadlineRequest(headline).then(resultCode => {
+            if (resultCode === 0) {
+                setProfileHeadline(headline)
+            }
+        })
+    }
+}
+export const getHeadline = headline => {
+    return dispatch => {
+        debugger
+        getHeadlineRequest().then(headline => {
+            setHeadline(headline)
+        })
     }
 }

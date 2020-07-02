@@ -1,14 +1,20 @@
 import React, {useEffect} from 'react'
 import Button from '../../common/Buttons/Button'
 import {useForm} from 'react-hook-form'
+import {getHeadlineRequest} from '../../../API/requests'
 
-const HeadlineForm = ({setHeadlineValue, setEditMode}) => {
-    const {register, handleSubmit} = useForm()
+const HeadlineForm = ({setHeadlineValue, setEditMode, setHeadline, headlineValue}) => {
+    const {register, handleSubmit} = useForm({
+        defaultValues: {
+            headline: headlineValue,
+        },
+    })
     const headlineModal = React.createRef()
 
-    const onSubmit = ({headlineValue}) => {
-        console.log(headlineValue)
-        setHeadlineValue(headlineValue)
+    const onSubmit = ({headline}) => {
+        console.log(headline)
+        setHeadlineValue(headline)
+        setHeadline(headline)
         setEditMode(false)
     }
 
@@ -28,7 +34,7 @@ const HeadlineForm = ({setHeadlineValue, setEditMode}) => {
         <div ref={headlineModal}>
             <form onSubmit={handleSubmit(onSubmit)} className='headline-form '>
                 <p className='headline-form__title'>Edit headline:</p>
-                <input name='headlineValue' ref={register} className='headline-form__input'></input>
+                <input name='headline' ref={register} className='headline-form__input'></input>
                 <Button className='headline-form__button'>Save</Button>
             </form>
         </div>

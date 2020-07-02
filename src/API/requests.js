@@ -51,12 +51,12 @@ export const signInRequest = ({email, login, remeberMe = false}) => {
 }
 
 export const getHeadlineRequest = userId => {
-    return baseRequest.get(`/profile/status/${userId} `).then(response => {
-        console.log(response.data)
+    return baseRequest.get(`/profile/status/${userId}`).then(response => {
+        return response.data
     })
 }
-export const setHeadlineRequest = userId => {
-    return baseRequest.post(`/profile/status/`).then(response => {
-        console.log(response.data)
+export const setHeadlineRequest = headline => {
+    return baseRequest.put(`/profile/status/`, {status: headline}).then(response => {
+        return response.data
     })
 }
