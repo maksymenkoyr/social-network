@@ -1,0 +1,16 @@
+.sign-in-form {
+    background-color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    &__title {
+        margin: 0;
+        margin-left: 10px;
+    }
+    &__alert {
+        color: #ff0033;
+        margin: 0;
+        min-height: 30px;
+    }
+}

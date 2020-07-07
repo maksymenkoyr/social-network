@@ -10,10 +10,11 @@ export function initializationFailed() {
     return {type: INITIALIZATION_FAILED}
 }
 
+
+
 export function initializeApp() {
     return function (dispatch) {
         authenticateUserRequest().then(response => {
-            
             if (response.resultCode === 0) {
                 dispatch(initializationComplete())
             } else {

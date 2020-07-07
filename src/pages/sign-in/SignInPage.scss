@@ -1,0 +1,14 @@
+.sign-in-page {
+    position: relative;
+    &__form {
+        position: absolute;
+
+        left: 50%;
+        top: 50%;
+
+        transform: translate(-50%, 50%);
+
+        width: 40%;
+        box-shadow: 0px 0px 20px -10px #000;
+    }
+}

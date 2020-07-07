@@ -22,7 +22,7 @@ const Initialization = ({
     }
 }
 
-const mapStateToProps = store => ({
-    ...initializationSelector(store),
+const mapStateToProps = state => ({
+    ...initializationSelector(state),
 })
 export default connect(mapStateToProps, {initializeApp})(Initialization)

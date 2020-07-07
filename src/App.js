@@ -10,7 +10,7 @@ const App = () => {
                 <Route exact path='/'>
                     <HomePage />
                 </Route>
-                <Route path='/'>
+                <Route path='/sign-in'>
                     <SignInPage />
                 </Route>
             </Switch>

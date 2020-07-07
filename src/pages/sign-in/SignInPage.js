@@ -1,7 +1,16 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {signInSelector, logIn} from '../../features/sign-in'
+import SignInPageModel from './SignInPageModel'
 
-const SignInPage = () => {
-    return <div>Sign-in</div>
+const SignInPage = props => {
+    return (
+        <div>
+            <SignInPageModel {...props} />
+        </div>
+    )
 }
-
-export default SignInPage
+const mapStateToProps = state => ({
+    ...signInSelector(state),
+})
+export default connect(mapStateToProps, {logIn})(SignInPage)
