@@ -10,7 +10,8 @@ const Initialization = ({
     initializationComplete,
     initializationFailed,
 }) => {
-    useEffect(() => {
+    
+useEffect(() => {
         initializeApp()
     }, [])
     if (!initializationComplete && !initializationFailed) {

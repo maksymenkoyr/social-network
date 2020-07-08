@@ -1,21 +1,23 @@
-const {INITIALIZATION_COMPLETE, INITIALIZATION_FAILED} = require('./actions')
+const {SET_AUTHENTICATED_USER, INITIALIZATION_FAILED} = require('./actions')
 
 let initialState = {
     initializationComplete: false,
     initializationFailed: false,
+    authenticatedUser: {},
 }
 
 const initializationReducer = (state = initialState, action) => {
     switch (action.type) {
-        case INITIALIZATION_COMPLETE: {
+        case SET_AUTHENTICATED_USER: {
             return {
-                ...state,
+                initializationFailed: false,
                 initializationComplete: true,
+                authenticatedUser: action.user,
             }
         }
         case INITIALIZATION_FAILED: {
             return {
-                ...state,
+                initializationComplete: true,
                 initializationFailed: true,
             }
         }
