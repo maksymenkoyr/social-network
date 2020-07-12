@@ -1,5 +1,5 @@
 import axios from 'axios'
-//---------authentication--------
+//---------Authentication--------
 const sampleRequest = axios.create({
     baseURL: `https://social-network.samuraijs.com/api/1.0/`,
     headers: {
@@ -18,4 +18,9 @@ export const signInRequest = ({email, password, rememberMe}) => {
     return sampleRequest
         .post('auth/login', {email, password, rememberMe})
         .then(response => response.data)
+}
+//-----------Profile-----------
+
+export const getProfileRequest = userId => {
+    return sampleRequest.get(`/profile/${userId}`).then(response => response.data)
 }

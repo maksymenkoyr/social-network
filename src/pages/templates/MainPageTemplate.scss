@@ -1,0 +1,15 @@
+.main-page {
+    display: grid;
+    &__header {
+        background-color: #fff;
+        height: 7vh;
+        box-shadow: 0px 0px 7px -3px #000;
+        padding: 0 20px;
+    }
+    &__content {
+        
+        margin: 0 auto;
+        padding-top: 50px;
+        width: 900px;
+    }
+}

@@ -1,4 +1,3 @@
-@import "./_style-variables";
 *,
 *:after,
 *:before {
@@ -15,7 +14,7 @@ body {
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: $app-background;
+  background-color: #f7f7f7;
 }
 
 code {

@@ -1,9 +1,9 @@
 import {signInRequest} from '../../dal/dal'
 
-export const REQUEST_SENT = 'REQUEST_SENT'
-export function requestSent() {
+export const SIGN_IN_REQUEST_SENT = 'SIGN_IN_REQUEST_SENT'
+export function signInRequestSent() {
     return {
-        type: REQUEST_SENT,
+        type: SIGN_IN_REQUEST_SENT,
     }
 }
 export const SIGN_IN_COMPLETE = 'SING_IN_COMPLETE'
@@ -27,7 +27,7 @@ export function cleanSignInState() {
 export function logIn(requestData) {
     return function (dispatch) {
         dispatch(cleanSignInState())
-        dispatch(requestSent())
+        dispatch(signInRequestSent())
         signInRequest(requestData).then(response => {
             if (response.resultCode === 0) {
                 dispatch(signInComplete())

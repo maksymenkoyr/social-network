@@ -32,7 +32,7 @@ const SignInForm = props => {
                     pattern: {value: /^\S+@\S+\.\S+$/, message: 'invalid email'},
                 })}
                 error={errors.email}
-                placeHolder="Email"
+                placeholder='Email'
             />
             <Input
                 name='password'
@@ -42,7 +42,7 @@ const SignInForm = props => {
                     maxLength: {value: 35, message: 'Maximum 5 characters'},
                 })}
                 error={errors.password}
-                placeHolder='Password'
+                placeholder='Password'
             />
             <label>
                 <input type='checkbox' ref={register} name='rememberMe' />

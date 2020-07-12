@@ -1,4 +1,9 @@
-import {REQUEST_SENT, SIGN_IN_COMPLETE, SIGN_IN_FAILED, CLEAN_SIGN_IN_STATE} from './actions'
+import {
+    SIGN_IN_REQUEST_SENT,
+    SIGN_IN_COMPLETE,
+    SIGN_IN_FAILED,
+    CLEAN_SIGN_IN_STATE,
+} from './actions'
 let initialState = {
     requestSent: false,
     signInComplete: false,
@@ -10,7 +15,7 @@ const reducer = (state = initialState, action) => {
         case CLEAN_SIGN_IN_STATE: {
             return initialState
         }
-        case REQUEST_SENT: {
+        case SIGN_IN_REQUEST_SENT: {
             return {
                 ...state,
                 requestSent: true,
