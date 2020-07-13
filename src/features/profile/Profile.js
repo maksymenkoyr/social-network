@@ -13,13 +13,12 @@ const Profile = ({profile, ...props}) => {
     if (!props.profileDefine) {
         return <div>loading</div>
     }
-    console.log(profile.photos)
     return (
         <div className='profile'>
             <div className='profile__avatar-section'>
                 <img
                     className='profile__avatar'
-                    src={profile.photos?.large || require('./defaultAvatar.svg')}
+                    src={profile.photos?.large || require('../../lib/defaultAvatar.svg')}
                     alt='avatar'
                 />
                 <Button className='profile__avatar-button'>Setting</Button>
@@ -33,6 +32,6 @@ const Profile = ({profile, ...props}) => {
 }
 const mapStateToProps = state => ({
     profile: state.profile.profile,
-    profileDefine: state.profile.profile,
+    profileDefine: state.profile.profileDefine,
 })
 export default connect(mapStateToProps, {defineProfile})(Profile)

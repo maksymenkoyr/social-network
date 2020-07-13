@@ -24,3 +24,9 @@ export const signInRequest = ({email, password, rememberMe}) => {
 export const getProfileRequest = userId => {
     return sampleRequest.get(`/profile/${userId}`).then(response => response.data)
 }
+
+//-----------Users----------------
+
+export const getUsersRequest = pageNumber => {
+    return sampleRequest.get(`/users?count=5&page=${pageNumber}`).then(response => response.data)
+}
