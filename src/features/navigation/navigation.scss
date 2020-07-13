@@ -1,0 +1,21 @@
+.main-nav {
+    width: 100%;
+    display: flex;
+
+    &__button {
+        text-align: center;
+        width: 80px;
+        padding: 2px 10px;
+        border-radius: 5px;
+        &:hover {
+            background: #3485f03e;
+            a {
+                color: #3485f0;
+            }
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+    }
+}
