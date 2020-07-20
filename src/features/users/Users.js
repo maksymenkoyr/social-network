@@ -1,30 +1,55 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {connect} from 'react-redux'
-import {getUsers} from './actions'
+import {getUsers, setPageNumber} from './actions'
 import UsersPrewiev from '../usersPrewiev/UserPrewiev'
 import './Users.scss'
+import {HorizontalLoader} from '../../ui'
 
-const Users = ({getUsers, pageNumber, ...props}) => {
+const Users = ({getUsers, pageNumber, isUsersLoading, isUsersGot, ...props}) => {
+    useEffect(() => {
+        function handleScroll() {
+            const spaceToEndOfPage =
+                document.documentElement.scrollHeight -
+                (document.documentElement.clientHeight + window.pageYOffset)
+            if (spaceToEndOfPage < 400) {
+                if (!isUsersLoading) {
+                    getUsers(++pageNumber, {loadUsers: true})
+                }
+            }
+        }
+        document.addEventListener('scroll', handleScroll)
+        return () => document.removeEventListener('scroll', handleScroll)
+    }, [getUsers, isUsersLoading, pageNumber])
+
     useEffect(() => {
         getUsers(pageNumber)
-    }, [getUsers, pageNumber])
-    if (!props.usersGot) {
+    }, [])
+
+    if (!isUsersGot) {
         return <p>loading...</p>
     }
     return (
-        <ul className='users-list'>
-            {props.users.map(user => (
-                <li>
-                    <UsersPrewiev user={user} />
-                </li>
-            ))}
-        </ul>
+        <>
+            <ul className='users-list'>
+                {props.users.map(user => (
+                    <li>
+                        <UsersPrewiev user={user} />
+                    </li>
+                ))}
+            </ul>
+            {true ? (
+                <div className='users-list__loading'>
+                    <HorizontalLoader />
+                </div>
+            ) : null}
+        </>
     )
 }
 const mapStateToProps = state => ({
     users: state.users.usersList,
     pageNumber: state.users.pageNumber,
-    usersGot: state.users.usersGot,
+    isUsersGot: state.users.usersGot,
+    isUsersLoading: state.users.isUsersLoading,
 })
 
-export default connect(mapStateToProps, {getUsers})(Users)
+export default connect(mapStateToProps, {getUsers, setPageNumber})(Users)

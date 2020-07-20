@@ -28,5 +28,5 @@ export const getProfileRequest = userId => {
 //-----------Users----------------
 
 export const getUsersRequest = pageNumber => {
-    return sampleRequest.get(`/users?count=5&page=${pageNumber}`).then(response => response.data)
+    return sampleRequest.get(`/users?count=10&page=${pageNumber}`).then(response => response.data)
 }
