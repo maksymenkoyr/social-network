@@ -4,6 +4,7 @@ import {getUsers, setPageNumber} from './actions'
 import UsersPrewiev from '../usersPrewiev/UserPrewiev'
 import './Users.scss'
 import {HorizontalLoader} from '../../ui'
+import {toggleFrienshipStatus} from './friendship/actions'
 
 const Users = ({getUsers, pageNumber, isUsersLoading, isUsersGot, ...props}) => {
     useEffect(() => {
@@ -32,8 +33,12 @@ const Users = ({getUsers, pageNumber, isUsersLoading, isUsersGot, ...props}) => 
         <>
             <ul className='users-list'>
                 {props.users.map(user => (
-                    <li>
-                        <UsersPrewiev user={user} />
+                    <li key={user.id}>
+                        <UsersPrewiev
+                            user={user}
+                            isFrendshipStatusLoading={props.loadingFriendshipStatuses?.[user.id]}
+                            toggleFrienshipStatus={props.toggleFrienshipStatus}
+                        />
                     </li>
                 ))}
             </ul>
@@ -50,6 +55,7 @@ const mapStateToProps = state => ({
     pageNumber: state.users.pageNumber,
     isUsersGot: state.users.usersGot,
     isUsersLoading: state.users.isUsersLoading,
+    loadingFriendshipStatuses: state.users.inLoading.friendshipStatuses,
 })
 
-export default connect(mapStateToProps, {getUsers, setPageNumber})(Users)
+export default connect(mapStateToProps, {getUsers, setPageNumber, toggleFrienshipStatus})(Users)

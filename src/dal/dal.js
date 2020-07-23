@@ -30,3 +30,10 @@ export const getProfileRequest = userId => {
 export const getUsersRequest = pageNumber => {
     return sampleRequest.get(`/users?count=10&page=${pageNumber}`).then(response => response.data)
 }
+
+export const addToFriendsRequest = userId => {
+    return sampleRequest.post(`/follow/${userId}`).then(request => request.data)
+}
+export const removeFromFriendsREquest = userId => {
+    return sampleRequest.delete(`/follow/${userId}`).then(request => request.data)
+}
