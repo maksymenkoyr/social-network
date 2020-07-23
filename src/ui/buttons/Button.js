@@ -4,9 +4,8 @@ import CirkleLoader from '../loaders/CirkleLoader'
 
 const Button = ({loading, ...props}) => {
     return (
-        <button className={props.className + ' ' + styles.button}>
-            {props.children}
-            {loading ? <CirkleLoader/> : null}
+        <button onClick={() => props.action()} className={props.className + ' ' + styles.button}>
+            {loading ? <CirkleLoader /> : props.children}
         </button>
     )
 }
