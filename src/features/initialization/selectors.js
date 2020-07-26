@@ -3,4 +3,4 @@ export const initializationSelector = state => ({
     initializationFailed: state.initialization.initializationFailed,
 })
 
-export const userIdSelector = state => state.initialization.authenticatedUser.id
+export const userIdSelector = state => state.initialization.authenticatedUser?.id

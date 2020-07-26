@@ -17,7 +17,8 @@ const initializationReducer = (state = initialState, action) => {
         }
         case INITIALIZATION_FAILED: {
             return {
-                initializationComplete: true,
+                ...state,
+                initializationComplete: false,
                 initializationFailed: true,
             }
         }

@@ -48,7 +48,7 @@ const SignInForm = props => {
                 <input type='checkbox' ref={register} name='rememberMe' />
                 Remember me
             </label>
-            <Button>Sign in</Button>
+            <Button className='sign-in-form__button'>Sign in</Button>
         </form>
     )
 }

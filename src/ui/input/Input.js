@@ -4,7 +4,7 @@ const input = props => {
     return (
         <div className={'input ' + (props.error ? 'input--error' : '')}>
             <input
-                placeHolder={props.placeHolder}
+                placeholder={props.placeHolder}
                 className='input__field'
                 ref={props.register}
                 name={props.name}
