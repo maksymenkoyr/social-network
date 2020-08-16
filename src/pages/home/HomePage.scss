@@ -1,0 +1,11 @@
+.home-page {
+    background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)),
+        url("https://drscdn.500px.org/photo/7088995/q%3D80_m%3D2000/v2?sig=ad6dbeea0dc0bb4d519d49e7747d32815d72b57f9bc049e1b3401c46a62bfc8a");
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    &__title {
+        font-size: 6rem;
+        color: #fff;
+    }
+}

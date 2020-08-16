@@ -1,0 +1,74 @@
+.sign-in-header {
+    display: flex;
+    align-items: center;
+    position: relative;
+    p {
+        margin: 0;
+        height: 20px;
+        margin-right: 10px;
+    }
+    &__photo {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+    }
+}
+
+.sign-in-modal {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translate(0, 100%);
+    width: 300px;
+    background-color: #fff;
+    box-shadow: 0px 0px 5px -3px #000;
+    &__photo {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+    &__info {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        & div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        & p {
+            margin: 0;
+            font-weight: 300;
+        }
+        & b {
+            font-weight: 400;
+            font-size: 1.3rem;
+        }
+    }
+    &__my-profile-button {
+        padding: 3px 0;
+        border: none;
+        background: none;
+        font-size: 1.3rem;
+        color: #3484f0;
+        font-weight: 500;
+        margin: 10px 0;
+        &:hover {
+            background-color: #3484f030;
+        }
+    }
+    &__button {
+        padding: 5px 0;
+        border: none;
+        background-color: #fff;
+        font-size: 1.1rem;
+        color: #444;
+        &:hover {
+            background-color: #00000020;
+        }
+    }
+}
