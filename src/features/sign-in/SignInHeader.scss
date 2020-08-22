@@ -2,6 +2,8 @@
     display: flex;
     align-items: center;
     position: relative;
+    border-radius: 5px;
+    padding: 3px;
     p {
         margin: 0;
         height: 20px;
@@ -11,6 +13,10 @@
         height: 30px;
         width: 30px;
         border-radius: 50%;
+    }
+    &:hover {
+        background: #3485f03e;
+        color: #3485f0;
     }
 }
 

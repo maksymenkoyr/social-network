@@ -1,4 +1,4 @@
-import {getProfileRequest} from '../../dal/dal'
+import {getProfileRequest, setProfilePhotoRequest} from '../../dal/dal'
 
 export const SET_PROFILE = 'SET_PROFILE'
 export function setProfile(profile) {
@@ -13,5 +13,15 @@ export function defineProfile(userId) {
         getProfileRequest(userId).then(response => {
             dispatch(setProfile(response))
         })
+    }
+}
+
+export function setProfilePhoto(img, userId) {
+    return function (dispatch) {
+        setProfilePhotoRequest(img)
+            .then(() => getProfileRequest(userId))
+            .then(response => {
+                dispatch(setProfile(response))
+            })
     }
 }

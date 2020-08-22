@@ -25,6 +25,10 @@ export const getProfileRequest = userId => {
     return sampleRequest.get(`/profile/${userId}`).then(response => response.data)
 }
 
+export const setProfilePhotoRequest = img => {
+    return sampleRequest.post('profile/photo', img)
+}
+
 //-----------Users----------------
 
 export const getUsersRequest = pageNumber => {

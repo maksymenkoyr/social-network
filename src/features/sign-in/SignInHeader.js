@@ -14,11 +14,7 @@ const SignInHeader = props => {
     return (
         <>
             {props.initializationComplete ? (
-                <div
-                    className='sign-in-header'
-                    onMouseEnter={() => setModal(true)}
-                    onMouseLeave={() => setModal(false)}
-                >
+                <div className='sign-in-header' onClick={() => setModal(!modal)}>
                     <p>{props.authenticatedUser.login}</p>
                     <img
                         className='sign-in-header__photo'
