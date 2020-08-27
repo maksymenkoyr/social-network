@@ -11,8 +11,10 @@
     }
 
     &__avatar {
+        cursor: pointer;
         width: 100%;
         border-radius: 5px;
+        overflow: hidden;
     }
     &__avatar-wrapper {
         position: relative;
@@ -27,7 +29,7 @@
         text-align: center;
         font-size: 0px;
     }
-    &:hover &__edit-profile-photo {
+    &__avatar:hover ~ &__edit-profile-photo {
         background-color: #000000aa;
         font-size: 1rem;
         color: #fff;
@@ -62,5 +64,21 @@
     }
     &__img {
         width: 100%;
+        cursor: pointer;
+    }
+
+    &__close {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        top: 7px;
+        right: 7px;
+        border: none;
+        background: url(./../../lib/close.svg) no-repeat center;
+        cursor: pointer;
+        &:hover {
+            background-color: #ddd;
+            border-radius: 50%;
+        }
     }
 }

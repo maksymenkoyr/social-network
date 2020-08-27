@@ -27,7 +27,12 @@ const Profile = ({profile, ...props}) => {
                         onClick={() => setPhotoEditing(true)}
                     />
                     {isMyProfile ? (
-                        <div className='profile__edit-profile-photo'>Edit Profile Photo</div>
+                        <div
+                            className='profile__edit-profile-photo'
+                            onClick={() => setPhotoEditing(true)}
+                        >
+                            Edit Profile Photo
+                        </div>
                     ) : null}
                 </div>
                 <Button className='profile__avatar-button'>Setting</Button>
@@ -36,7 +41,12 @@ const Profile = ({profile, ...props}) => {
                 <p className='profile__name'>{profile.fullName}</p>
                 <div className='profile_work-status'></div>
             </div>
-            <EditProfilePhoto setProfilePhoto={img => props.setProfilePhoto(img, userId)} />
+            {photoEditing ? (
+                <EditProfilePhoto
+                    setPhotoEditing={setPhotoEditing}
+                    setProfilePhoto={img => props.setProfilePhoto(img, userId)}
+                />
+            ) : null}
         </div>
     )
 }

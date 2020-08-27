@@ -30,6 +30,10 @@ const EditProfilePhoto = props => {
                 >
                     Save
                 </button>
+                <button
+                    className='edit-photo-modal__close'
+                    onClick={() => props.setPhotoEditing(false)}
+                />
             </div>
         </div>
     )
