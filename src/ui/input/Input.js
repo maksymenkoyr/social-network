@@ -1,10 +1,11 @@
 import React from 'react'
 import './Input.scss'
-const input = props => {
+const Input = ({type = 'default', ...props}) => {
     return (
         <div className={'input ' + (props.error ? 'input--error' : '')}>
             <input
-                placeholder={props.placeHolder}
+                type={type}
+                placeholder={props.placeholder}
                 className='input__field'
                 ref={props.register}
                 name={props.name}
@@ -16,4 +17,4 @@ const input = props => {
     )
 }
 
-export default input
+export default Input

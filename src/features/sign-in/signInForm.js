@@ -36,6 +36,7 @@ const SignInForm = props => {
             />
             <Input
                 name='password'
+                type={'password'}
                 register={register({
                     required: 'Required',
                     minLength: {value: 5, message: 'Minimum 5 characters'},
