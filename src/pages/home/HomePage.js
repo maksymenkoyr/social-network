@@ -5,7 +5,7 @@ import './HomePage.scss'
 
 const HomePage = () => {
     return (
-        <Initialization>
+        <Initialization noRedirect>
             <MainPageTemplate>
                 <div className='home-page'>
                     <b className='home-page__title'>Social Network</b>

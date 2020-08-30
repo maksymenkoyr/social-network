@@ -5,6 +5,7 @@ import {initializationSelector} from './selectors'
 import {Redirect} from 'react-router-dom'
 
 const Initialization = ({
+    noRedirect = false,
     children,
     initializeApp,
     initializationComplete,
@@ -15,7 +16,7 @@ const Initialization = ({
     }, [])
     if (!initializationComplete && !initializationFailed) {
         return <p>preloader</p>
-    } else if (initializationComplete) {
+    } else if (initializationComplete || (initializationFailed && noRedirect)) {
         return children
     } else if (initializationFailed) {
         return <Redirect push to='/sign-in' />
