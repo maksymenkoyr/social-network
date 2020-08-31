@@ -14,10 +14,12 @@ export const authenticateUserRequest = () => {
 
 //---------Sign-in-----------------------
 
-export const signInRequest = ({email, password, rememberMe}) => {
-    return sampleRequest
-        .post('auth/login', {email, password, rememberMe})
-        .then(response => response.data)
+export const signInRequest = data => {
+    return sampleRequest.post('auth/login', {...data}).then(response => response.data)
+}
+
+export const getCaptchaRequest = () => {
+    return sampleRequest.get('security/get-captcha-url').then(response => response.data)
 }
 //-----------Profile-----------
 

@@ -14,6 +14,14 @@
         margin: 0;
         min-height: 30px;
     }
+    &__checkbox {
+        padding-bottom: 5px;
+    }
+    &__captcha {
+        height: auto;
+        width: 65%;
+        align-self: center;
+    }
     &__button {
         margin-top: 10px;
     }

@@ -1,10 +1,21 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {useForm} from 'react-hook-form'
 import {Button, Input, HorizontalLoader} from '../../ui'
 import './SignInForm.scss'
 import {Redirect} from 'react-router-dom'
-
+import {getCaptchaRequest} from '../../dal/dal'
 const SignInForm = props => {
+    const [captchaSrc, setcaptchaSrc] = useState(null)
+    useEffect(() => {
+        if (props.signInFailed) defineCaptcha()
+    }, [props.signInFailed])
+    useEffect(() => {
+        defineCaptcha()
+    }, [])
+    const defineCaptcha = () => {
+        getCaptchaRequest().then(response => setcaptchaSrc(response.url))
+    }
+
     const {register, handleSubmit, errors} = useForm({
         mode: 'onBlur',
     })
@@ -45,7 +56,15 @@ const SignInForm = props => {
                 error={errors.password}
                 placeholder='Password'
             />
-            <label>
+            <img className='sign-in-form__captcha' alt='' src={captchaSrc}></img>
+            <Input
+                name='captcha'
+                register={register({
+                    required: 'Required',
+                })}
+                placeholder='Enter the symbols from the image'
+            />
+            <label className='sign-in-form__checkbox'>
                 <input type='checkbox' ref={register} name='rememberMe' />
                 Remember me
             </label>
