@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 import './SignInHeader.scss'
 import {defineProfile} from '../profile'
+import {signOutRequest} from '../../dal/dal'
 
 const SignInHeader = props => {
     const [modal, setModal] = useState(false)
@@ -40,7 +41,9 @@ const SignInHeader = props => {
                                 My profile
                             </button>
                             <button className='sign-in-modal__button'>Setting</button>
-                            <button className='sign-in-modal__button'>Log out</button>
+                            <button className='sign-in-modal__button' onClick={signOutRequest}>
+                                Log out
+                            </button>
                         </div>
                     ) : null}
                 </div>

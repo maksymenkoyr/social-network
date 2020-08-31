@@ -17,6 +17,9 @@ export const authenticateUserRequest = () => {
 export const signInRequest = data => {
     return sampleRequest.post('auth/login', {...data}).then(response => response.data)
 }
+export const signOutRequest = data => {
+    return sampleRequest.delete('auth/login').then(response => response.data)
+}
 
 export const getCaptchaRequest = () => {
     return sampleRequest.get('security/get-captcha-url').then(response => response.data)
