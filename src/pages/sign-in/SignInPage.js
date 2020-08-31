@@ -6,12 +6,13 @@ import {Initialization} from '../../features/initialization'
 
 const SignInPage = props => {
     return (
-        <div>
-                <SignInPageModel {...props} />
-        </div>
+        <Initialization noRedirect>
+            <SignInPageModel {...props} />
+        </Initialization>
     )
 }
 const mapStateToProps = state => ({
     ...signInSelector(state),
 })
+
 export default connect(mapStateToProps, {logIn})(SignInPage)
