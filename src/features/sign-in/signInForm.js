@@ -57,6 +57,9 @@ const SignInForm = props => {
                 placeholder='Password'
             />
             <img className='sign-in-form__captcha' alt='' src={captchaSrc}></img>
+            <div className='sign-in-form__captcha-refresh' onClick={defineCaptcha}>
+                Refresh image
+            </div>
             <Input
                 name='captcha'
                 register={register({
