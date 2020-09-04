@@ -1,0 +1,11 @@
+.editing-button {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: url(../../lib/editing-icon.svg) center no-repeat;
+    background-size: 25px 25px;
+    &:hover {
+        background-color: #cceeff60;
+    }
+}
