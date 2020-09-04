@@ -2,14 +2,18 @@
     display: grid;
     grid-template-columns: 1fr 3fr;
     gap: 20px;
-
-    &__avatar-section,
-    &__info-section {
-        border-radius: 5px;
-        background-color: #fff;
-        padding: 10px;
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 70px;
+    h3 {
+        font-weight: 500;
+        margin: 0;
+        margin-bottom: 5px;
     }
-
+    p {
+        margin: 0;
+    }
+    &__avatar-section,
     &__avatar {
         cursor: pointer;
         width: 100%;
@@ -26,7 +30,6 @@
         padding-top: 25px;
         width: 100%;
         bottom: 2px;
-        text-align: center;
         font-size: 0px;
     }
     &__avatar:hover ~ &__edit-profile-photo {
@@ -40,6 +43,39 @@
 
     &__name {
         margin: 0px;
+        font-size: 1.6rem;
+        font-weight: 500;
+        letter-spacing: 0.8px;
+    }
+    &__info-section {
+        border-radius: 5px;
+        background-color: #fff;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__headline {
+        margin: 0;
+        min-height: 20px;
+    }
+    &__job-preferences {
+        width: 90%;
+        background-color: #3484f010;
+        align-self: center;
+        padding: 20px 10px;
+        border: 1px solid #3484f050;
+        margin-bottom: 10px;
+        h3 {
+            margin: 0;
+            font-weight: 400;
+        }
+    }
+    &__about {
+        min-height: 20px;
+    }
+    &__contacts {
+        height: 40px;
     }
 }
 

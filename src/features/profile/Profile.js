@@ -39,7 +39,26 @@ const Profile = ({profile, ...props}) => {
             </div>
             <div className='profile__info-section'>
                 <p className='profile__name'>{profile.fullName}</p>
-                <div className='profile_work-status'></div>
+                <p className='profile__headline'></p>
+                <div
+                    className={
+                        'profile__job-preferences ' +
+                        (profile.lookingForAJob ? 'profile__job-preferences--turned-off' : null)
+                    }
+                >
+                    {' '}
+                    <h3>
+                        {profile.lookingForAJob ? 'Open to work' : 'Edit your job preferencess'}
+                    </h3>
+                    <p className='profile__job-preferences-discription'>
+                        {profile.lookingForAJobDiscription}
+                    </p>
+                </div>
+                <h3 className='profile__about-title'>About me:</h3>
+                <p className='profile__about'>{profile.aboutMe}</p>
+                <div className='profile__contacts'>
+                    <h3 className='profile__contacts-title'>Contacts:</h3>
+                </div>
             </div>
             {photoEditing ? (
                 <EditProfilePhoto
