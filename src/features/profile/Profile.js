@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react'
-import {Button} from '../../ui'
+import {Button, CirkleLoader, EditingButton, SocialNetworkButton} from '../../ui'
 import {defineProfile, setProfilePhoto} from './actions'
 import {connect} from 'react-redux'
 import {useParams} from 'react-router-dom'
 import './Profile.scss'
 import EditProfilePhoto from './EditProfilePhoto'
+import {facebook} from '../../lib/constants'
+import ProfileHeadline from './ProfileHeadline'
 
 const Profile = ({profile, ...props}) => {
     const [photoEditing, setPhotoEditing] = useState(null)
@@ -13,10 +15,12 @@ const Profile = ({profile, ...props}) => {
         props.defineProfile(userId)
     }, [userId])
     if (!props.profileDefine) {
-        return <div>loading</div>
+        return <CirkleLoader big blue center />
     }
     const isMyProfile = props.authenticatedUserId === +userId
+    console.log(Object.keys(profile).length)
     return (
+        // доработать лоадер в initialization, продолжить работу надд profile headline
         <div className='profile'>
             <div className='profile__avatar-section'>
                 <div className='profile__avatar-wrapper'>
@@ -39,7 +43,7 @@ const Profile = ({profile, ...props}) => {
             </div>
             <div className='profile__info-section'>
                 <p className='profile__name'>{profile.fullName}</p>
-                <p className='profile__headline'></p>
+                <ProfileHeadline></ProfileHeadline>
                 <div
                     className={
                         'profile__job-preferences ' +
@@ -54,10 +58,16 @@ const Profile = ({profile, ...props}) => {
                         {profile.lookingForAJobDiscription}
                     </p>
                 </div>
-                <h3 className='profile__about-title'>About me:</h3>
-                <p className='profile__about'>{profile.aboutMe}</p>
+                <div className='profile__about'>
+                    <h3 className='profile__about-title'>About me:</h3>
+                    <p className='profile__about-content'>{profile.aboutMe}</p>
+                    <EditingButton classes={'profile__editing-button'} />
+                </div>
                 <div className='profile__contacts'>
                     <h3 className='profile__contacts-title'>Contacts:</h3>
+                    {/* {Object.entries(profile.contacts).map()} */}
+                    <SocialNetworkButton socialNetwork={facebook} />
+                    <EditingButton classes={'profile__editing-button'} />
                 </div>
             </div>
             {photoEditing ? (
