@@ -60,6 +60,6 @@ const SignInHeader = props => {
 const mapStateToProps = state => ({
     authenticatedUser: state.initialization.authenticatedUser,
     initializationComplete: state.initialization.initializationComplete,
-    userPhoto: state.profile.profile.userPhoto,
+    userPhoto: state.profile.profile.photos?.small,
 })
 export default connect(mapStateToProps, {})(SignInHeader)
