@@ -3,6 +3,7 @@ import {initializeApp} from './actions'
 import {connect} from 'react-redux'
 import {initializationSelector} from './selectors'
 import {Redirect} from 'react-router-dom'
+import {CirkleLoader} from '../../ui'
 
 const Initialization = ({
     noRedirect = false,
@@ -15,7 +16,11 @@ const Initialization = ({
         initializeApp()
     }, [])
     if (!initializationComplete && !initializationFailed) {
-        return <p>preloader</p>
+        return (
+            <>
+                <CirkleLoader center big blue />
+            </>
+        )
     } else if (initializationComplete || (initializationFailed && noRedirect)) {
         return children
     } else if (initializationFailed) {
