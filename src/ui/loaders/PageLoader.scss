@@ -1,0 +1,38 @@
+.page-loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -100%);
+    &__title{
+        text-align: center;
+        color: #3484f0;
+        font-weight: 700;
+        font-size: 25px;
+        margin: 0;
+        margin-bottom: 10px;
+    }
+    &__loader{
+        width: 200px;
+        height: 5px;
+        background-color: #ddd;
+        border-radius: 2px;
+        display: flex;
+        justify-content: center;
+        div{
+            width: 20px;
+            height: 5px;
+            border-radius: 2px;
+            animation: 1.5s infinite page-loader;
+            background-color: #3484f0;
+        }
+    }
+}
+
+@keyframes page-loader{
+50%{
+width: 200px;
+}
+100%{
+    width: 20px;
+}
+}
