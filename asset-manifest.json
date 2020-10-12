@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/MaksimenkoYR/social-network/static/css/main.af698be9.chunk.css",
+    "main.js": "/MaksimenkoYR/social-network/static/js/main.0d4904a7.chunk.js",
+    "main.js.map": "/MaksimenkoYR/social-network/static/js/main.0d4904a7.chunk.js.map",
+    "runtime-main.js": "/MaksimenkoYR/social-network/static/js/runtime-main.0a40426a.js",
+    "runtime-main.js.map": "/MaksimenkoYR/social-network/static/js/runtime-main.0a40426a.js.map",
+    "static/js/2.99b62560.chunk.js": "/MaksimenkoYR/social-network/static/js/2.99b62560.chunk.js",
+    "static/js/2.99b62560.chunk.js.map": "/MaksimenkoYR/social-network/static/js/2.99b62560.chunk.js.map",
+    "index.html": "/MaksimenkoYR/social-network/index.html",
+    "precache-manifest.2089e8200ca75377d94bf0866a357c81.js": "/MaksimenkoYR/social-network/precache-manifest.2089e8200ca75377d94bf0866a357c81.js",
+    "service-worker.js": "/MaksimenkoYR/social-network/service-worker.js",
+    "static/css/main.af698be9.chunk.css.map": "/MaksimenkoYR/social-network/static/css/main.af698be9.chunk.css.map",
+    "static/js/2.99b62560.chunk.js.LICENSE.txt": "/MaksimenkoYR/social-network/static/js/2.99b62560.chunk.js.LICENSE.txt",
+    "static/media/Profile.scss": "/MaksimenkoYR/social-network/static/media/close.d000c749.svg",
+    "static/media/defaultAvatar.svg": "/MaksimenkoYR/social-network/static/media/defaultAvatar.2582587b.svg",
+    "static/media/EditingButton.scss": "/MaksimenkoYR/social-network/static/media/editing-icon.c48b8d4b.svg",
+    "static/media/SocialNetworkButton.scss": "/MaksimenkoYR/social-network/static/media/facebook.ae0f8410.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0a40426a.js",
+    "static/js/2.99b62560.chunk.js",
+    "static/css/main.af698be9.chunk.css",
+    "static/js/main.0d4904a7.chunk.js"
+  ]
+}
