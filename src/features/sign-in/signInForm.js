@@ -35,7 +35,7 @@ const SignInForm = props => {
                 {props.signInFailed ? 'incorect password and/or email' : null}
             </p>
             <p className='sign-in-form__help-info'>
-                Sing in as gest usung this:
+                Sing-in as gest usung this:
                 <br />
                 <b>Email:</b> free@samuraijs.com
                 <br />
