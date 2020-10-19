@@ -44,7 +44,9 @@ const SignInHeader = props => {
                             <button className='sign-in-modal__button'>Setting</button>
                             <button
                                 className='sign-in-modal__button'
-                                onClick={() => signOutRequest().then(window.location.reload())}
+                                onClick={() =>
+                                    signOutRequest().then(() => window.location.reload())
+                                }
                             >
                                 Log out
                             </button>
