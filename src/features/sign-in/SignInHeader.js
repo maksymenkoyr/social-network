@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import Button from '../../ui/buttons/ButtonWithAction'
 import {connect} from 'react-redux'
 import {useHistory} from 'react-router-dom'
@@ -7,23 +7,40 @@ import {defineProfile} from '../profile'
 import {signOutRequest} from '../../dal/dal'
 
 const SignInHeader = props => {
-    const [modal, setModal] = useState(false)
+    const [modalStatus, setModalStatus] = useState(false)
     const history = useHistory()
+    const modal = useRef(null)
     useEffect(() => {
         defineProfile(props.authenticatedUser.id)
+    })
+    useEffect(() => {
+        function handleClickOutside(ev) {
+            if (modal.current && !modal.current.contains(ev.target)) {
+                setModalStatus(false)
+                console.log('fff')
+            }
+        }
+        document.addEventListener('click', handleClickOutside)
+        return () => {
+            document.removeEventListener('click', handleClickOutside)
+        }
     })
 
     return (
         <>
             {props.initializationComplete ? (
-                <div className='sign-in-header' onClick={() => setModal(!modal)}>
+                <div
+                    ref={modal}
+                    className='sign-in-header'
+                    onClick={() => setModalStatus(!modalStatus)}
+                >
                     <p>{props.authenticatedUser.login}</p>
                     <img
                         className='sign-in-header__photo'
                         src={props.userPhoto || require('../../lib/defaultAvatar.svg')}
                         alt='avatar'
                     ></img>
-                    {modal ? (
+                    {modalStatus ? (
                         <div className='sign-in-modal'>
                             <div className='sign-in-modal__info'>
                                 <img
