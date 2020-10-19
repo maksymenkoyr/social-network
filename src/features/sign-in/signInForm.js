@@ -34,11 +34,18 @@ const SignInForm = props => {
             <p className='sign-in-form__alert'>
                 {props.signInFailed ? 'incorect password and/or email' : null}
             </p>
+            <p className='sign-in-form__help-info'>
+                Sing in as gest usung this:
+                <br />
+                <b>Email:</b> free@samuraijs.com
+                <br />
+                <b>Password:</b> free
+            </p>
             <Input
                 name='email'
                 register={register({
                     required: 'Required',
-                    minLength: {value: 5, message: 'Minimum 5 characters'},
+                    minLength: {value: 3, message: 'Minimum 3 characters'},
                     maxLength: {value: 35, message: 'Maximum 5 characters'},
                     pattern: {value: /^\S+@\S+\.\S+$/, message: 'invalid email'},
                 })}
@@ -50,7 +57,7 @@ const SignInForm = props => {
                 type={'password'}
                 register={register({
                     required: 'Required',
-                    minLength: {value: 5, message: 'Minimum 5 characters'},
+                    minLength: {value: 3, message: 'Minimum 3 characters'},
                     maxLength: {value: 35, message: 'Maximum 5 characters'},
                 })}
                 error={errors.password}
