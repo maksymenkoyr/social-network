@@ -1,5 +1,5 @@
 import React from 'react'
-import {Button} from '../../ui'
+import {ButtonWithAction} from '../../ui'
 import './UserPrewiev.scss'
 
 const UserPrewiev = ({user, toggleFrienshipStatus, isFrendshipStatusLoading}) => {
@@ -12,12 +12,13 @@ const UserPrewiev = ({user, toggleFrienshipStatus, isFrendshipStatusLoading}) =>
                 <span className='user-prewiev__name'>{user.name}</span>
             </div>
             <div>
-                <Button
+                <ButtonWithAction
+                    className={user.followed ? 'follow-button--unfollow' : 'follow-button--follow'}
                     loading={isFrendshipStatusLoading}
                     action={() => toggleFrienshipStatus(user.id, !user.followed)}
                 >
                     {user.followed ? 'Unfollow' : 'Follow'}
-                </Button>
+                </ButtonWithAction>
             </div>
         </div>
     )
