@@ -1,10 +1,17 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
 import {ButtonWithAction} from '../../ui'
 import './UserPrewiev.scss'
 
 const UserPrewiev = ({user, toggleFrienshipStatus, isFrendshipStatusLoading}) => {
+    const history = useHistory()
     return (
-        <div className='user-prewiev'>
+        <div
+            className='user-prewiev'
+            onClick={() => {
+                history.push(`profile/${user.id}`)
+            }}
+        >
             <div className='user-prewiev__avatar'>
                 <img alt='' src={user.photos?.small || require('../../lib/defaultAvatar.svg')} />
             </div>
