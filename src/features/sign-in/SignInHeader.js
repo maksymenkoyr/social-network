@@ -11,8 +11,8 @@ const SignInHeader = props => {
     const history = useHistory()
     const modal = useRef(null)
     useEffect(() => {
-        defineProfile(props.authenticatedUser.id)
-    })
+        props.defineProfile(props.authenticatedUser.id)
+    }, [])
     useEffect(() => {
         function handleClickOutside(ev) {
             if (modal.current && !modal.current.contains(ev.target)) {
@@ -81,4 +81,4 @@ const mapStateToProps = state => ({
     initializationComplete: state.initialization.initializationComplete,
     userPhoto: state.profile.profile.photos?.small,
 })
-export default connect(mapStateToProps, {})(SignInHeader)
+export default connect(mapStateToProps, {defineProfile})(SignInHeader)
