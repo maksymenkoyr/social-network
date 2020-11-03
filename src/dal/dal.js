@@ -34,6 +34,9 @@ export const setProfilePhotoRequest = img => {
     return sampleRequest.post('profile/photo', img)
 }
 
+export const getProfileHeadlineRequest = userId => {
+    return sampleRequest.get(`status/${userId}`)
+}
 //-----------Users----------------
 
 export const getUsersRequest = pageNumber => {

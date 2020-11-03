@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {Button, CirkleLoader, EditingButton, SocialNetworkButton} from '../../ui'
+import {Button, CirkleLoader, EditingButton, HorizontalLoader, SocialNetworkButton} from '../../ui'
 import {defineProfile, setProfilePhoto} from './actions'
 import {connect} from 'react-redux'
 import {useParams} from 'react-router-dom'

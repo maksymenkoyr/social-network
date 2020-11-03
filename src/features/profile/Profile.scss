@@ -72,10 +72,18 @@
         }
     }
     &__about {
+        position: relative;
+    }
+    &__about-content {
         min-height: 20px;
     }
     &__contacts {
         height: 40px;
+        position: relative;
+    }
+    &__editing-button {
+        top: 5px;
+        right: 5px;
     }
 }
 
